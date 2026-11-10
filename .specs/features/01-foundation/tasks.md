@@ -773,9 +773,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `action-menu.test.tsx` cobre os critérios 12 a 14
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 76 tests pass (no silent deletions)
+- [x] `action-menu.test.tsx` cobre os critérios 12 a 14
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 76 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. O botão é o `Button` `ghost` `sm` só com ícone, com o `Ellipsis` do Lucide (três pontos na horizontal, como o desenho do design system). O menu abre num portal do Radix, então o `className` vai para o botão e não há o `z-index` que o design system dava ao card com o menu aberto. A animação de abertura (`et-pop`) ficou de fora: o web ainda não tem `keyframes`.
 
 **Tests**: unit
 **Gate**: quick
