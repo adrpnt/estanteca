@@ -683,9 +683,9 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `skeleton.test.tsx` cobre o critério 15 nas quatro variantes
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 65 tests pass (no silent deletions)
+- [x] `skeleton.test.tsx` cobre o critério 15 nas quatro variantes
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 65 tests pass (no silent deletions)
 
 **Tests**: unit
 **Gate**: quick
