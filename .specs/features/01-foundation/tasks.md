@@ -191,8 +191,10 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `npm run dev -w @estanteca/web` serve `http://localhost:3000`
-- [ ] Gate check passes: `npm run build && npm run typecheck && npm run lint && npm test`
+- [x] `npm run dev -w @estanteca/web` serve `http://localhost:3000`
+- [x] Gate check passes: `npm run build && npm run typecheck && npm run lint && npm test`
+
+**Status**: ✅ Complete. O `create-next-app` 16.4 gera o Tailwind com `@tailwindcss/turbopack` (não `@tailwindcss/postcss`) e liga `cacheComponents` e `partialPrefetching` por padrão; ficou como gerado. `agentRules: false` impede o `next dev` de criar `AGENTS.md` ao detectar um agente. `typecheck` roda `next typegen` antes do `tsc`, porque `LayoutProps` vem dos tipos gerados pelo Next. O `turbo.json` guarda `.next/**` como saída do build. O placeholder do kit (`README.md`, `.gitkeep`) saiu, e o código gerado foi formatado com o Prettier do repositório.
 
 **Tests**: none
 **Gate**: build
@@ -211,10 +213,12 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `lib/cn.test.ts`: junta classes e ignora valores falsos
-- [ ] `npm test` na raiz roda Japa e Vitest e termina com 0
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 2 tests pass (no silent deletions)
+- [x] `lib/cn.test.ts`: junta classes e ignora valores falsos
+- [x] `npm test` na raiz roda Japa e Vitest e termina com 0
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 2 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. O alias `@` fica em `resolve.alias` do Vitest, sem `vite-tsconfig-paths`. Sem `globals: true`, o `vitest.setup.ts` chama `cleanup()` depois de cada teste.
 
 **Tests**: unit
 **Gate**: quick
@@ -233,9 +237,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `npm run typecheck` na raiz passa
-- [ ] Remover o `@ts-expect-error` faz o typecheck falhar (verificado à mão e revertido)
-- [ ] Gate check passes: `npm run build && npm run typecheck && npm run lint && npm test`
+- [x] `npm run typecheck` na raiz passa
+- [x] Remover o `@ts-expect-error` faz o typecheck falhar (verificado à mão e revertido)
+- [x] Gate check passes: `npm run build && npm run typecheck && npm run lint && npm test`
+
+**Status**: ✅ Complete. O cliente usa `api.request('<nome da rota>', ...)`, cujo nome só aceita as rotas do registro. O tsconfig do web ganhou `experimentalDecorators`, porque o `tsc` segue os tipos do registro até os modelos Lucid da API (`database/schema.ts`), que usam decorators; o Next compila com SWC, então a opção só afeta a checagem.
 
 **Tests**: none
 **Gate**: build
@@ -254,9 +260,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `node scripts/smoke-dev.mjs` imprime `dev ok: api 200, web 200` e sai com 0
-- [ ] Nenhum processo fica rodando depois do script
-- [ ] Gate check passes: `npm run build && npm run typecheck && npm run lint && npm test`
+- [x] `node scripts/smoke-dev.mjs` imprime `dev ok: api 200, web 200` e sai com 0
+- [x] Nenhum processo fica rodando depois do script
+- [x] Gate check passes: `npm run build && npm run typecheck && npm run lint && npm test`
+
+**Status**: ✅ Complete. O script roda `npm run dev -- --ui=stream` num grupo de processos próprio e encerra o grupo inteiro (SIGTERM, SIGKILL depois de 10 s). Falha logo se `:3333` ou `:3000` já respondem antes de subir, para a prova não passar com servidores de outra sessão.
 
 **Tests**: none
 **Gate**: build
@@ -1070,7 +1078,7 @@ Proof: run web | ✓ Stepper > limita current fora da lista
 
 The feature's live state, written as it happens - a compaction gives no warning.
 
-**Settled mid-build:** execução inline, sem sub-agentes, e só quando o usuário pedir - user: "Aprovo as tarefas, e a execução será inline, mas não execute nada agora." · O `**Build**` falha antes da T1 porque o repositório não tem `package.json`; a T1 segue e `validate_tasks.py --execute` precisa passar verde antes da T2 - user: "Seguir e validar após a T1 (Recomendado)" · Planejamento e modelos de PR entram em dois commits antes da T1 (`docs` com `.specs/`, `chore` com `.github/`) - user: "Dois commits antes da T1 (Recomendado)"
+**Settled mid-build:** o `next dev` criava `apps/web/AGENTS.md` ao detectar um agente; desligado com `agentRules: false` no `next.config.ts` - user: "Desligar (Recomendado)" · execução inline, sem sub-agentes, e só quando o usuário pedir - user: "Aprovo as tarefas, e a execução será inline, mas não execute nada agora." · O `**Build**` falha antes da T1 porque o repositório não tem `package.json`; a T1 segue e `validate_tasks.py --execute` precisa passar verde antes da T2 - user: "Seguir e validar após a T1 (Recomendado)" · Planejamento e modelos de PR entram em dois commits antes da T1 (`docs` com `.specs/`, `chore` com `.github/`) - user: "Dois commits antes da T1 (Recomendado)"
 **Dispatched:** none
 **Walked:** none
 
