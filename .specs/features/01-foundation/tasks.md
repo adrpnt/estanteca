@@ -842,9 +842,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `toast.test.tsx` cobre os critérios 9 a 13 (com timers falsos)
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 95 tests pass (no silent deletions)
+- [x] `toast.test.tsx` cobre os critérios 9 a 13 (com timers falsos)
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 95 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. O Radix anuncia cada aviso num `role="status"` à parte, com `aria-live` educado para `background` (sucesso) e assertivo para `foreground` (erro), nunca `role="alert"`. O `Toaster` lê a fila com `useToasts()` e cada aviso fechado sai dela com `toast.dismiss`. A região usa `--et-toast-offset`, como no design system, para ficar acima da BottomNav. O critério 12 tem dois testes, um para o ponteiro e outro para o foco. Gate de build da fase verde (95 testes no web, 2 na API).
 
 **Tests**: unit
 **Gate**: quick
