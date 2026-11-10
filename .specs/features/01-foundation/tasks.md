@@ -937,7 +937,7 @@ Proof: run web | ✓ tokens > expõe os tokens no @theme e mantém --spacing em 
 Proof: run web | ✓ tokens > mapeia serif, sans e mono para as fontes do next/font
 
 **C12** - Sem preferência ou com `system`, o tema segue o `prefers-color-scheme` (THEME-01, AC 5)
-Proof: run web | ✓ tokens > aplica as cores escuras pela media query quando não há data-theme="light"
+Proof: run web | ✓ tokens > sem preferência ou com system, o tema segue a media query, que aplica as cores escuras
 
 **C13** - Escolher um tema no seletor aplica na hora e grava o cookie `theme` (THEME-01, AC 6)
 Proof: run web | ✓ ThemeSwitcher > escolher Escuro aplica data-theme e grava o cookie sem recarregar
@@ -1027,7 +1027,7 @@ Proof: run web | ✓ SearchDialog > setas movem o resultado ativo e voltam ao in
 Proof: run web | ✓ SearchDialog > Enter escolhe o resultado ativo
 
 **C42** - Sem resultados, mostra `empty` ou "Nada encontrado para “…”." (UI-08, AC 6)
-Proof: run web | ✓ SearchDialog > sem resultados mostra a mensagem de nada encontrado
+Proof: run web | ✓ SearchDialog > sem resultados mostra a mensagem de nada encontrado ou o conteúdo de empty
 
 **C43** - Esc ou clique fora chamam `onOpenChange(false)` (UI-08, AC 7)
 Proof: run web | ✓ SearchDialog > Esc e clique fora fecham
@@ -1045,7 +1045,7 @@ Proof: run web | ✓ Toast > ação e Fechar aviso removem o aviso
 Proof: run web | ✓ Toast > sucesso some em 5 segundos e com ação em 8
 
 **C48** - Ponteiro ou foco pausam a contagem (UI-09, AC 12)
-Proof: run web | ✓ Toast > ponteiro sobre o aviso pausa a contagem
+Proof: run web | ✓ Toast > ponteiro ou foco no aviso pausam a contagem
 
 **C49** - Erro fica até o leitor fechar (UI-09, AC 13)
 Proof: run web | ✓ Toast > erro fica até ser fechado
@@ -1072,7 +1072,7 @@ Proof: run web | ✓ BookCard > aciona actions sem acionar o link
 Proof: run web | ✓ Shelf > mostra a contagem e nomeia a área das capas
 
 **C57** - StatusChip mostra o texto de cada status ou o `label` (UI-13, AC 7)
-Proof: run web | ✓ StatusChip > mostra o texto de cada um dos 7 status
+Proof: run web | ✓ StatusChip > mostra o texto de cada um dos 7 status ou o label
 
 **C58** - Rating de exibição tem o nome "Nota X de 5" ou "Sem nota" (UI-14, AC 8)
 Proof: run web | ✓ Rating > nomeia a nota com vírgula decimal ou Sem nota
@@ -1093,7 +1093,7 @@ Proof: run web | ✓ progress > limita o percentual entre 0 e 100
 Proof: run web | ✓ Stat > sensível começa oculto e mostra o valor ao acionar o botão
 
 **C64** - EmptyState mostra o título no nível certo e a ação (UI-17, AC 14)
-Proof: run web | ✓ EmptyState > mostra o título como cabeçalho e a ação
+Proof: run web | ✓ EmptyState > mostra o título como cabeçalho no nível de level e a ação
 
 **C65** - Skeleton fica escondido de leitores de tela (UI-17, AC 15)
 Proof: run web | ✓ Skeleton > fica escondido de leitores de tela em todas as variantes

@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { compile } from 'tailwindcss'
 import { describe, expect, it, vi } from 'vitest'
+import { THEME_SCRIPT } from '@/lib/theme'
 import tokens from './design-tokens.json'
 
 vi.mock('next/font/google', () => {
@@ -135,7 +136,15 @@ describe('tokens', () => {
     }
   })
 
-  it('aplica as cores escuras pela media query quando não há data-theme="light"', () => {
+  it('sem preferência ou com system, o tema segue a media query, que aplica as cores escuras', () => {
+    const root = document.documentElement
+    for (const cookie of [undefined, 'system']) {
+      if (cookie) document.cookie = `theme=${cookie}; path=/`
+      new Function(THEME_SCRIPT)()
+      expect(root.hasAttribute('data-theme'), cookie ?? 'sem cookie').toBe(false)
+    }
+    document.cookie = 'theme=; max-age=0; path=/'
+
     for (const { name, value } of colors) {
       expect(systemDarkVars[`--color-${name}`], name).toBe(value.dark)
     }

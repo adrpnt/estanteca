@@ -145,10 +145,23 @@ describe('SearchDialog', () => {
     expect(onSelect).toHaveBeenCalledWith(quincas)
   })
 
-  it('sem resultados mostra a mensagem de nada encontrado', () => {
-    setup({ query: ' quincas borba ', groups: [{ label: 'No seu acervo', items: [] }] })
+  it('sem resultados mostra a mensagem de nada encontrado ou o conteúdo de empty', () => {
+    const { unmount } = setup({
+      query: ' quincas borba ',
+      groups: [{ label: 'No seu acervo', items: [] }],
+    })
 
     expect(screen.getByText('Nada encontrado para “quincas borba”.')).toBeTruthy()
+    expect(screen.queryByRole('listbox')).toBeNull()
+    unmount()
+
+    setup({
+      query: 'quincas borba',
+      groups: [],
+      empty: <a href="/app/acervo/novo">Cadastrar manualmente</a>,
+    })
+    expect(screen.getByRole('link', { name: 'Cadastrar manualmente' })).toBeTruthy()
+    expect(screen.queryByText(/Nada encontrado/)).toBeNull()
     expect(screen.queryByRole('listbox')).toBeNull()
   })
 

@@ -11,8 +11,10 @@ function covers(titles: string[]) {
 describe('Shelf', () => {
   it('mostra a contagem e nomeia a área das capas', async () => {
     const user = userEvent.setup()
-    render(<Shelf title="Cabeceira">{covers(['Dom Casmurro'])}</Shelf>)
+    const { rerender } = render(<Shelf title="Lidos">{covers(['Dom', 'Iracema'])}</Shelf>)
+    expect(screen.getByText('2 livros')).toBeTruthy()
 
+    rerender(<Shelf title="Cabeceira">{covers(['Dom Casmurro'])}</Shelf>)
     expect(screen.getByText('1 livro')).toBeTruthy()
     expect(screen.getByRole('heading', { level: 2, name: 'Cabeceira' })).toBeTruthy()
 

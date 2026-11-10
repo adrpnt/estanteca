@@ -83,7 +83,7 @@ describe('Toast', () => {
     expect(screen.queryByText(added)).toBeNull()
   })
 
-  it('ponteiro sobre o aviso pausa a contagem', () => {
+  it('ponteiro ou foco no aviso pausam a contagem', () => {
     vi.useFakeTimers()
     render(<Toaster />)
 
@@ -102,6 +102,23 @@ describe('Toast', () => {
 
     advance(1)
     expect(screen.queryByText(moved)).toBeNull()
+
+    act(() => {
+      toast.success(added)
+    })
+
+    advance(3000)
+    const close = screen.getByRole('button', { name: 'Fechar aviso' })
+    act(() => close.focus())
+    advance(10000)
+    expect(screen.getByText(added)).toBeTruthy()
+
+    act(() => close.blur())
+    advance(1999)
+    expect(screen.getByText(added)).toBeTruthy()
+
+    advance(1)
+    expect(screen.queryByText(added)).toBeNull()
   })
 
   it('foco no aviso pausa a contagem', () => {
