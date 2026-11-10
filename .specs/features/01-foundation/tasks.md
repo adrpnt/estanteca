@@ -865,9 +865,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `design/page.test.tsx` cobre: 19 seções com os nomes dos componentes e o seletor de tema; 404 em produção
-- [ ] Gate check passes: `npm run build && npm run typecheck && npm run lint && npm test`
-- [ ] Test count: 97 tests pass (no silent deletions)
+- [x] `design/page.test.tsx` cobre: 19 seções com os nomes dos componentes e o seletor de tema; 404 em produção
+- [x] Gate check passes: `npm run build && npm run typecheck && npm run lint && npm test`
+- [x] Test count: 97 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. A página é server component e chama `notFound()` quando `NODE_ENV` é `production`; as demos com estado (SideNav, BottomNav, FilterChip, Rating de escolha, SearchTrigger, SearchDialog e Toast) ficam em `app/design/demos.tsx`, com `'use client'`, arquivo a mais que o "Where" pela fronteira entre servidor e cliente. SearchDialog e ActionMenu começam fechados: nas previews eles abrem dentro de iframes isolados, e abertos na carga prenderiam o foco e esconderiam o resto da página de leitores de tela. A busca da demo abre pelo SearchTrigger ou por ⌘K / Ctrl+K e filtra com `matchesQuery`. O Toast aparece pelo `Toaster`, com o botão "Mostrar avisos" disparando os três avisos da preview. `next start` responde 404 em `/design` e `next dev` responde 200 com as 19 seções. Gate de build verde (97 testes no web, 2 na API).
 
 **Tests**: unit
 **Gate**: build
@@ -878,21 +880,24 @@ T34 → T35
 
 ### T35: README da raiz
 
-**What**: Escrever o `README.md` da raiz com pré-requisitos (Node 24, npm 12, Docker), os comandos do clone ao `npm run dev`, os scripts da raiz e onde fica a vitrine.
-**Where**: `README.md`
+**What**: Escrever o `README.md` da raiz com pré-requisitos (Node 24, npm 12, Docker), os comandos do clone ao `npm run dev`, os scripts da raiz e onde fica a vitrine. O `postinstall` da raiz roda `scripts/setup-env.mjs`, que cria `apps/api/.env` a partir do `.env.example` com um `APP_KEY` novo quando o arquivo não existe.
+**Where**: `README.md`, `package.json`, `scripts/setup-env.mjs`, `scripts/setup-env.test.mjs`
 **Depends on**: T34
-**Reuses**: nada
-**Requirement**: FOUND-01
+**Reuses**: formato do `APP_KEY` do `node ace generate:key` (32 caracteres URL-safe)
+**Requirement**: FOUND-01, FOUND-05
 
 **Done when**:
 
-- [ ] Do clone ao `npm run dev` em no máximo 4 comandos
-- [ ] Gate check passes: `npm run build && npm run typecheck && npm run lint && npm test`
+- [x] Do clone ao `npm run dev` em no máximo 4 comandos
+- [x] `scripts/setup-env.test.mjs` cobre: cria o `.env` com `APP_KEY` novo quando falta; mantém intacto um `.env` existente
+- [x] Gate check passes: `npm run build && npm run typecheck && npm run lint && npm test`
 
-**Tests**: none
+**Status**: ✅ Complete. O README tem pré-requisitos, os 4 comandos (clone, `npm install`, `docker compose up -d`, `npm run dev`), os scripts da raiz, a vitrine e a estrutura. O `postinstall` roda `scripts/setup-env.mjs`, que gera o `APP_KEY` com `randomBytes(24)` em base64url (32 caracteres URL-safe, o formato do `node ace generate:key`) e grava com `wx`, sem sobrescrever. Conferido num clone novo do repositório: o `npm install` (npm 12) rodou o `postinstall`, criou o `.env` e o `node scripts/smoke-dev.mjs` viu a API e o web em 200. Gate de build verde (97 testes no web, 2 na API, 2 do `setup-env`).
+
+**Tests**: unit (`node --test`, sem dependência nova)
 **Gate**: build
 
-**Commit**: `docs: add setup instructions`
+**Commit**: `chore: create the API env on install and document the setup`
 
 ---
 
@@ -908,10 +913,10 @@ Proof: run api | ✔ GET / responde 200 com um corpo JSON
 Proof: run api | ✔ conexão usa o cliente pg no banco estanteca_test
 
 **C4** - `npm test` na raiz roda Japa e Vitest e termina com 0 (FOUND-03, AC 4)
-Proof: `npm test`
+Proof: `out=$(npm test 2>&1) && echo "$out" | grep -q "@estanteca/api:test: .*PASSED" && echo "$out" | grep -q "@estanteca/web:test: .*Tests.*passed"`
 
 **C5** - `npm run lint` e `npm run typecheck` verificam as duas apps e terminam com 0 (FOUND-03, AC 5)
-Proof: `npm run lint && npm run typecheck`
+Proof: `out=$(npm run lint 2>&1 && npm run typecheck 2>&1) && for t in api:lint web:lint api:typecheck web:typecheck; do echo "$out" | grep -q "@estanteca/$t:" || exit 1; done`
 
 **C6** - Chamar uma rota inexistente no cliente tipado falha no typecheck (FOUND-04, AC 6)
 Proof: `npm run typecheck -w @estanteca/web`
@@ -932,7 +937,7 @@ Proof: run web | ✓ tokens > expõe os tokens no @theme e mantém --spacing em 
 Proof: run web | ✓ tokens > mapeia serif, sans e mono para as fontes do next/font
 
 **C12** - Sem preferência ou com `system`, o tema segue o `prefers-color-scheme` (THEME-01, AC 5)
-Proof: run web | ✓ tokens > aplica as cores escuras pela media query quando não há data-theme="light"
+Proof: run web | ✓ tokens > sem preferência ou com system, o tema segue a media query, que aplica as cores escuras
 
 **C13** - Escolher um tema no seletor aplica na hora e grava o cookie `theme` (THEME-01, AC 6)
 Proof: run web | ✓ ThemeSwitcher > escolher Escuro aplica data-theme e grava o cookie sem recarregar
@@ -941,7 +946,7 @@ Proof: run web | ✓ ThemeSwitcher > escolher Escuro aplica data-theme e grava o
 Proof: run web | ✓ ThemeSwitcher > escolher Automático remove data-theme e grava system
 
 **C15** - Com cookie `light` ou `dark`, o script inline aplica o tema antes da primeira pintura (THEME-01, AC 7)
-Proof: run web | ✓ THEME_SCRIPT > aplica o tema do cookie ao elemento raiz
+Proof: run web | ✓ THEME_SCRIPT > o layout põe no head o script que aplica o tema do cookie ao elemento raiz
 
 **C16** - Cookie com valor inválido é tratado como `system` (THEME-01, AC 8)
 Proof: run web | ✓ parseTheme > trata valor inválido como system
@@ -1022,7 +1027,7 @@ Proof: run web | ✓ SearchDialog > setas movem o resultado ativo e voltam ao in
 Proof: run web | ✓ SearchDialog > Enter escolhe o resultado ativo
 
 **C42** - Sem resultados, mostra `empty` ou "Nada encontrado para “…”." (UI-08, AC 6)
-Proof: run web | ✓ SearchDialog > sem resultados mostra a mensagem de nada encontrado
+Proof: run web | ✓ SearchDialog > sem resultados mostra a mensagem de nada encontrado ou o conteúdo de empty
 
 **C43** - Esc ou clique fora chamam `onOpenChange(false)` (UI-08, AC 7)
 Proof: run web | ✓ SearchDialog > Esc e clique fora fecham
@@ -1040,7 +1045,7 @@ Proof: run web | ✓ Toast > ação e Fechar aviso removem o aviso
 Proof: run web | ✓ Toast > sucesso some em 5 segundos e com ação em 8
 
 **C48** - Ponteiro ou foco pausam a contagem (UI-09, AC 12)
-Proof: run web | ✓ Toast > ponteiro sobre o aviso pausa a contagem
+Proof: run web | ✓ Toast > ponteiro ou foco no aviso pausam a contagem
 
 **C49** - Erro fica até o leitor fechar (UI-09, AC 13)
 Proof: run web | ✓ Toast > erro fica até ser fechado
@@ -1067,7 +1072,7 @@ Proof: run web | ✓ BookCard > aciona actions sem acionar o link
 Proof: run web | ✓ Shelf > mostra a contagem e nomeia a área das capas
 
 **C57** - StatusChip mostra o texto de cada status ou o `label` (UI-13, AC 7)
-Proof: run web | ✓ StatusChip > mostra o texto de cada um dos 7 status
+Proof: run web | ✓ StatusChip > mostra o texto de cada um dos 7 status ou o label
 
 **C58** - Rating de exibição tem o nome "Nota X de 5" ou "Sem nota" (UI-14, AC 8)
 Proof: run web | ✓ Rating > nomeia a nota com vírgula decimal ou Sem nota
@@ -1088,7 +1093,7 @@ Proof: run web | ✓ progress > limita o percentual entre 0 e 100
 Proof: run web | ✓ Stat > sensível começa oculto e mostra o valor ao acionar o botão
 
 **C64** - EmptyState mostra o título no nível certo e a ação (UI-17, AC 14)
-Proof: run web | ✓ EmptyState > mostra o título como cabeçalho e a ação
+Proof: run web | ✓ EmptyState > mostra o título como cabeçalho no nível de level e a ação
 
 **C65** - Skeleton fica escondido de leitores de tela (UI-17, AC 15)
 Proof: run web | ✓ Skeleton > fica escondido de leitores de tela em todas as variantes
@@ -1108,15 +1113,24 @@ Proof: run web | ✓ Shelf > usa count como total quando é maior que as capas
 **C70** - O Stepper limita `current` ao primeiro ou ao último passo (edge case)
 Proof: run web | ✓ Stepper > limita current fora da lista
 
+**C71** - `npm install` cria `apps/api/.env` com um `APP_KEY` novo quando falta e mantém um `.env` existente (FOUND-05, AC 7)
+Proof: `node --test scripts/setup-env.test.mjs`
+
+**C72** - A Shelf não conta nem desenha filhos vazios (`false`, `null`) (UI-12, AC 6)
+Proof: run web | ✓ Shelf > não conta nem desenha filhos vazios
+
+**C73** - O `title` da Shelf só aceita texto, porque nomeia a área das capas ("Livros da estante {título}") (UI-12, AC 6)
+Proof: `npm run typecheck -w @estanteca/web`
+
 ---
 
 ## Handoff
 
 The feature's live state, written as it happens - a compaction gives no warning.
 
-**Settled mid-build:** o `next dev` criava `apps/web/AGENTS.md` ao detectar um agente; desligado com `agentRules: false` no `next.config.ts` - user: "Desligar (Recomendado)" · execução inline, sem sub-agentes, e só quando o usuário pedir - user: "Aprovo as tarefas, e a execução será inline, mas não execute nada agora." · O `**Build**` falha antes da T1 porque o repositório não tem `package.json`; a T1 segue e `validate_tasks.py --execute` precisa passar verde antes da T2 - user: "Seguir e validar após a T1 (Recomendado)" · Planejamento e modelos de PR entram em dois commits antes da T1 (`docs` com `.specs/`, `chore` com `.github/`) - user: "Dois commits antes da T1 (Recomendado)"
-**Dispatched:** none
-**Walked:** none
+**Settled mid-build:** o `next dev` criava `apps/web/AGENTS.md` ao detectar um agente; desligado com `agentRules: false` no `next.config.ts` - user: "Desligar (Recomendado)" · execução inline, sem sub-agentes, e só quando o usuário pedir - user: "Aprovo as tarefas, e a execução será inline, mas não execute nada agora." · O `**Build**` falha antes da T1 porque o repositório não tem `package.json`; a T1 segue e `validate_tasks.py --execute` precisa passar verde antes da T2 - user: "Seguir e validar após a T1 (Recomendado)" · Planejamento e modelos de PR entram em dois commits antes da T1 (`docs` com `.specs/`, `chore` com `.github/`) - user: "Dois commits antes da T1 (Recomendado)" · Num clone novo a API não sobe sem `apps/api/.env` e `APP_KEY`; o `postinstall` da raiz cria o arquivo quando falta, para o README ficar em 4 comandos (critério 7 e FOUND-05 na spec, C71) - user: "postinstall cria o .env (Recomendado)"
+**Dispatched:** Verifier at `23f0a31` (diff `32db405..23f0a31`), sent 2026-11-10, returned FAIL (8 findings) - user: "Despachar o sub-agente (Recomendado)"; screens sub-agent: não se aplica, nenhum critério cita captura
+**Walked:** Monorepo rodando localmente: clone novo do repositório, `npm install` (criou `apps/api/.env` pelo `postinstall`) e `node scripts/smoke-dev.mjs`, com API e web em 200. C68: com `docker compose stop`, `npm run dev` subiu a API (`GET /` em 200, o Lucid só conecta na primeira consulta) e o web (`http://localhost:3000` em 200); `POST /api/v1/auth/login` respondeu 500 com `connect ECONNREFUSED 127.0.0.1:5432` e o terminal da API mostrou `Acquire connection error: Error: connect ECONNREFUSED 127.0.0.1:5432`; depois, `docker compose up -d`. Vitrine `/design`: `next dev` respondeu 200 com as 19 seções e `next start` respondeu 404. Sem navegador que o agente consiga dirigir: a troca de tema com recarga, a navegação só por teclado, a busca por ⌘K / Ctrl+K e os toasts em `/design` ficam para a conferência do usuário, com `npm run dev` e `http://localhost:3000/design`, sem login nem dados.
 
 ---
 

@@ -69,14 +69,20 @@ describe('SearchDialog', () => {
   })
 
   it('com menos de 3 caracteres mostra a dica e nenhuma lista', () => {
-    setup({ query: 'ma' })
+    const hint = 'Digite pelo menos 3 letras do título ou do autor, ou o ISBN.'
+    for (const query of ['ma', '  ma  ']) {
+      const { unmount } = setup({ query })
 
-    expect(
-      screen.getByText('Digite pelo menos 3 letras do título ou do autor, ou o ISBN.')
-    ).toBeTruthy()
-    expect(screen.queryByRole('listbox')).toBeNull()
-    expect(screen.queryAllByRole('option')).toHaveLength(0)
-    expect(screen.getByRole('combobox').getAttribute('aria-expanded')).toBe('false')
+      expect(screen.getByText(hint)).toBeTruthy()
+      expect(screen.queryByRole('listbox')).toBeNull()
+      expect(screen.queryAllByRole('option')).toHaveLength(0)
+      expect(screen.getByRole('combobox').getAttribute('aria-expanded')).toBe('false')
+      unmount()
+    }
+
+    setup({ query: 'mac' })
+    expect(screen.queryByText(hint)).toBeNull()
+    expect(screen.getAllByRole('option')).toHaveLength(3)
   })
 
   it('mostra os grupos com resultados e ignora os vazios', () => {
@@ -139,10 +145,23 @@ describe('SearchDialog', () => {
     expect(onSelect).toHaveBeenCalledWith(quincas)
   })
 
-  it('sem resultados mostra a mensagem de nada encontrado', () => {
-    setup({ query: ' quincas borba ', groups: [{ label: 'No seu acervo', items: [] }] })
+  it('sem resultados mostra a mensagem de nada encontrado ou o conteúdo de empty', () => {
+    const { unmount } = setup({
+      query: ' quincas borba ',
+      groups: [{ label: 'No seu acervo', items: [] }],
+    })
 
     expect(screen.getByText('Nada encontrado para “quincas borba”.')).toBeTruthy()
+    expect(screen.queryByRole('listbox')).toBeNull()
+    unmount()
+
+    setup({
+      query: 'quincas borba',
+      groups: [],
+      empty: <a href="/app/acervo/novo">Cadastrar manualmente</a>,
+    })
+    expect(screen.getByRole('link', { name: 'Cadastrar manualmente' })).toBeTruthy()
+    expect(screen.queryByText(/Nada encontrado/)).toBeNull()
     expect(screen.queryByRole('listbox')).toBeNull()
   })
 

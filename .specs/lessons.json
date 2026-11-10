@@ -1,0 +1,153 @@
+{
+  "schema": 1,
+  "promote_threshold": 2,
+  "window_days": 45,
+  "quarantine_threshold": 2,
+  "next_id": 9,
+  "lessons": [
+    {
+      "id": "L-001",
+      "key": "ac_gap::count and list children with children toarray so false null and undefined children are not counted or rendered",
+      "text": "Count and list children with Children.toArray so false, null and undefined children are not counted or rendered",
+      "signal": "ac_gap",
+      "scope": "components",
+      "status": "candidate",
+      "features": [
+        "01-foundation"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "apps/web/src/components/ui/shelf.tsx:27 (components)"
+      ],
+      "created": "2026-11-10T19:10:41Z",
+      "last_seen": "2026-11-10T19:10:41Z"
+    },
+    {
+      "id": "L-002",
+      "key": "ac_gap::type a prop as string when it also builds an accessible name and guard the type with ts expect error",
+      "text": "Type a prop as string when it also builds an accessible name, and guard the type with ts-expect-error",
+      "signal": "ac_gap",
+      "scope": "components",
+      "status": "candidate",
+      "features": [
+        "01-foundation"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "apps/web/src/components/ui/shelf.tsx:28 (components)"
+      ],
+      "created": "2026-11-10T19:10:41Z",
+      "last_seen": "2026-11-10T19:10:41Z"
+    },
+    {
+      "id": "L-003",
+      "key": "ac_gap::clamp numeric index props after flooring them and treating nan as zero",
+      "text": "Clamp numeric index props after flooring them and treating NaN as zero",
+      "signal": "ac_gap",
+      "scope": "components",
+      "status": "candidate",
+      "features": [
+        "01-foundation"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "apps/web/src/components/ui/stepper.tsx:28 (components)"
+      ],
+      "created": "2026-11-10T19:10:41Z",
+      "last_seen": "2026-11-10T19:10:41Z"
+    },
+    {
+      "id": "L-004",
+      "key": "weak_test::test a length threshold exactly at the boundary and one below it after trimming",
+      "text": "Test a length threshold exactly at the boundary and one below it, after trimming",
+      "signal": "weak_test",
+      "scope": "tests",
+      "status": "candidate",
+      "features": [
+        "01-foundation"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "C38 (tests)"
+      ],
+      "created": "2026-11-10T19:10:41Z",
+      "last_seen": "2026-11-10T19:10:41Z"
+    },
+    {
+      "id": "L-005",
+      "key": "weak_test::make the test a check s proof selects assert every case the check names",
+      "text": "Make the test a check's proof selects assert every case the check names",
+      "signal": "weak_test",
+      "scope": "tests",
+      "status": "candidate",
+      "features": [
+        "01-foundation"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "C12, C42, C48, C56, C57, C64 (tests)"
+      ],
+      "created": "2026-11-10T19:10:41Z",
+      "last_seen": "2026-11-10T19:10:41Z"
+    },
+    {
+      "id": "L-006",
+      "key": "weak_test::test that the layout injects an inline script not only the script string in isolation",
+      "text": "Test that the layout injects an inline script, not only the script string in isolation",
+      "signal": "weak_test",
+      "scope": "tests",
+      "status": "candidate",
+      "features": [
+        "01-foundation"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "C15 (tests)"
+      ],
+      "created": "2026-11-10T19:10:41Z",
+      "last_seen": "2026-11-10T19:10:41Z"
+    },
+    {
+      "id": "L-007",
+      "key": "weak_test::assert each workspace task appears in a turbo run s output not only its exit code",
+      "text": "Assert each workspace task appears in a turbo run's output, not only its exit code",
+      "signal": "weak_test",
+      "scope": "proofs",
+      "status": "candidate",
+      "features": [
+        "01-foundation"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "C4, C5 (proofs)"
+      ],
+      "created": "2026-11-10T19:10:41Z",
+      "last_seen": "2026-11-10T19:10:41Z"
+    },
+    {
+      "id": "L-008",
+      "key": "weak_test::test the wiring that triggers a script such as a package json lifecycle hook not only the script",
+      "text": "Test the wiring that triggers a script, such as a package.json lifecycle hook, not only the script",
+      "signal": "weak_test",
+      "scope": "proofs",
+      "status": "candidate",
+      "features": [
+        "01-foundation"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "C71 (proofs)"
+      ],
+      "created": "2026-11-10T19:10:41Z",
+      "last_seen": "2026-11-10T19:10:41Z"
+    }
+  ]
+}

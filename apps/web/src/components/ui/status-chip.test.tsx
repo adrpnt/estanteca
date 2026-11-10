@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest'
 import { StatusChip } from './status-chip'
 
 describe('StatusChip', () => {
-  it('mostra o texto de cada um dos 7 status', () => {
+  it('mostra o texto de cada um dos 7 status ou o label', () => {
     const expected = {
       want: 'Quero ler',
       reading: 'Lendo',
@@ -19,6 +19,9 @@ describe('StatusChip', () => {
       expect(container.textContent).toBe(text)
       unmount()
     }
+
+    const { container } = render(<StatusChip status="overdue" label="Atrasado há 5 dias" />)
+    expect(container.textContent).toBe('Atrasado há 5 dias')
   })
 
   it('usa o label quando recebido', () => {

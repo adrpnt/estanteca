@@ -1,5 +1,12 @@
+import { renderToStaticMarkup } from 'react-dom/server'
 import { afterEach, describe, expect, it, vi } from 'vitest'
+import RootLayout from '@/app/layout'
 import { applyTheme, parseTheme, THEME_SCRIPT } from './theme'
+
+vi.mock('next/font/google', () => {
+  const font = (options: Record<string, unknown>) => ({ variable: options.variable })
+  return { Literata: font, Geist: font, Geist_Mono: font }
+})
 
 const root = document.documentElement
 
@@ -32,7 +39,16 @@ describe('parseTheme', () => {
 })
 
 describe('THEME_SCRIPT', () => {
-  it('aplica o tema do cookie ao elemento raiz', () => {
+  it('o layout põe no head o script que aplica o tema do cookie ao elemento raiz', () => {
+    // Renderiza fora de uma requisição: o layout não lê cookies no servidor.
+    const html = renderToStaticMarkup(
+      RootLayout({ children: null } as Parameters<typeof RootLayout>[0])
+    )
+    const page = new DOMParser().parseFromString(html, 'text/html')
+    const scripts = [...page.head.querySelectorAll('script')]
+    expect(scripts.map((script) => script.textContent)).toEqual([THEME_SCRIPT])
+    expect(page.body.querySelector('script')).toBeNull()
+
     document.cookie = 'theme=dark; path=/'
     runThemeScript()
     expect(root.getAttribute('data-theme')).toBe('dark')

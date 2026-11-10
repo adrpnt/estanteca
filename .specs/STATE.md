@@ -54,10 +54,10 @@
 ## Handoff
 
 - **Feature**: `.specs/features/01-foundation`
-- **Phase / Task**: Execute, Fase 6 (PER-55, "In Progress"), T27 a T33 concluídas
-- **Completed**: Fases 1 a 5 mergeadas (PRs #6 a #10); Fase 6 com as 7 tarefas commitadas e o gate Build verde (95 testes no web, 2 na API)
+- **Phase / Task**: Execute concluído; Fase 7 (PER-56, "In Review"), PR #12 aberto
+- **Completed**: Fases 1 a 6 mergeadas (PRs #6 a #11); Fase 7 com as 2 tarefas, a caminhada, o Verifier (8 achados, todos fechados por commit), 76 provas verdes e `validate_verification.py` com 0 erros; 8 lições candidatas em `.specs/LESSONS.md`
 - **In-progress** (file:line): nenhum
-- **Next step**: com o ok do usuário, `git push -u origin pntadr/per-55-fase-6-interativos-e-navegacao` e abrir o PR `PER-55: Fase 6: Interativos e navegação` (label `feature`, modelo `feature.md`); depois, Fase 7 (PER-56), T34
+- **Next step**: merge do PR #12 pelo usuário; a feature `01-foundation` fecha com ele. Próxima feature a especificar
 - **Blockers**: none
 - **Uncommitted files**: nenhum
-- **Branch**: `pntadr/per-55-fase-6-interativos-e-navegacao`
+- **Branch**: `pntadr/per-56-fase-7-vitrine-e-documentacao`
