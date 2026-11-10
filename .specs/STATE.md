@@ -54,10 +54,10 @@
 ## Handoff
 
 - **Feature**: `.specs/features/01-foundation`
-- **Phase / Task**: Execute, Fase 1 (PER-50, "In Progress"), T1
-- **Completed**: abertura da fase (branch criada, PER-50 em andamento)
-- **In-progress** (file:line): T1, gerar o monorepo a partir do starter kit
-- **Next step**: fazer a T1 e rodar `validate_tasks.py 01-foundation --execute`, que precisa passar verde antes da T2 (o `**Build**` falhava antes da T1 por falta de `package.json`)
+- **Phase / Task**: Execute, Fase 4 (PER-53, "In Progress"), T12 a T18 concluídas
+- **Completed**: Fases 1 a 3 mergeadas (PRs #6, #7 e #8); Fase 4 com as 7 tarefas commitadas e o gate Build verde (44 testes no web, 2 na API)
+- **In-progress** (file:line): nenhum
+- **Next step**: com o ok do usuário, `git push -u origin pntadr/per-53-fase-4-regras-e-componentes-de-formulario` e abrir o PR `PER-53: Fase 4: Regras e componentes de formulário` (label `feature`, modelo `feature.md`); depois, Fase 5 (PER-54), T19
 - **Blockers**: none
-- **Uncommitted files**: `.gitignore` (mudanças do usuário, entram no commit da T1)
-- **Branch**: `pntadr/per-50-fase-1-estrutura-e-api`
+- **Uncommitted files**: `.specs/STATE.md` (este Handoff)
+- **Branch**: `pntadr/per-53-fase-4-regras-e-componentes-de-formulario`
