@@ -467,9 +467,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `filter-chip.test.tsx` cobre o critério 9
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 39 tests pass (no silent deletions)
+- [x] `filter-chip.test.tsx` cobre o critério 9
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 39 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. O check do chip selecionado é o SVG inline do design system (o traço do `Check` do Lucide), porque o `lucide-react` só entra na T24.
 
 **Tests**: unit
 **Gate**: quick
