@@ -21,6 +21,12 @@ function run(dir) {
 }
 
 describe('setup-env', () => {
+  it('roda no npm install da raiz', () => {
+    const pkg = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'))
+
+    assert.equal(pkg.scripts.postinstall, 'node scripts/setup-env.mjs')
+  })
+
   it('cria o .env a partir do .env.example com um APP_KEY novo quando falta', () => {
     const first = apiDir()
     const second = apiDir()
