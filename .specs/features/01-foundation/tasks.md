@@ -121,9 +121,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `npm install` na raiz conclui sem erro, com `package-lock.json`
-- [ ] `apps/api` e `apps/web` existem com os nomes `@estanteca/api` e `@estanteca/web`
-- [ ] Gate check passes: `npm run build && npm run typecheck && npm run lint && npm test`
+- [x] `npm install` na raiz conclui sem erro, com `package-lock.json`
+- [x] `apps/api` e `apps/web` existem com os nomes `@estanteca/api` e `@estanteca/web`
+- [x] Gate check passes: `npm run build && npm run typecheck && npm run lint && npm test`
+
+**Status**: ✅ Complete. O kit desta versão já sai só com npm (sem `create-adonisjs.json`, `pnpm-workspace.yaml` e `.yarnrc.yml`). `apps/api/database/schema.ts`, regerado a cada `migration:run`, entrou no `.prettierignore` da API porque o lint do kit falhava nele.
 
 **Tests**: none
 **Gate**: build
