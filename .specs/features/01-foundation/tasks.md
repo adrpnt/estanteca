@@ -352,9 +352,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `theme-switcher.test.tsx` cobre: marca a opção do cookie atual; escolher "Escuro" aplica `data-theme="dark"` e grava o cookie sem recarregar; "Automático" remove `data-theme`
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 17 tests pass (no silent deletions)
+- [x] `theme-switcher.test.tsx` cobre: marca a opção do cookie atual; escolher "Escuro" aplica `data-theme="dark"` e grava o cookie sem recarregar; "Automático" remove `data-theme`
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 17 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. O seletor lê o cookie com `useSyncExternalStore`: no servidor vale `system` e no cliente vale o cookie, sem divergência na hidratação. O HTML pré-renderizado de `/` continua estático, com o script no `<head>` e sem `data-theme`. Gate de build da fase verde (17 testes no web, 2 na API).
 
 **Tests**: unit
 **Gate**: quick
