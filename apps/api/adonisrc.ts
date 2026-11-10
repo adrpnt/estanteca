@@ -90,6 +90,11 @@ export default defineConfig({
         name: 'functional',
         timeout: 30000,
       },
+      {
+        files: ['tests/integration/**/*.spec.{ts,js}'],
+        name: 'integration',
+        timeout: 10000,
+      },
     ],
     forceExit: false,
   },

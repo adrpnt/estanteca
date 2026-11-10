@@ -14,7 +14,7 @@ Implement these tasks with the `tlc-spec-driven` skill: **activate it by name an
 **Branch**: uma por fase, com o `gitBranchName` da issue da fase (AD-004)
 **Linear**: projeto [Estanteca](https://linear.app/adrpnt/project/estanteca-f9f002f87ec6/overview), milestone "01 · Foundation"; uma issue por fase (PER-50 a PER-56); fluxo de branch e PR em AD-004
 **Build**: `npm run build; npm run typecheck; npm run lint`
-**Run api**: `npm test -w @estanteca/api`
+**Run api**: `npm test -w @estanteca/api -- --reporters=spec`
 **Run web**: `npm run test -w @estanteca/web -- --reporter=verbose`
 
 Pré-requisito de todas as execuções da API: `docker compose up -d` (PostgreSQL 18).
@@ -167,10 +167,12 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `tests/functional/home.spec.ts`: `GET /` responde 200 com JSON
-- [ ] `tests/integration/database.spec.ts`: a conexão usa o cliente `pg` e o banco atual é `estanteca_test`
-- [ ] Gate check passes: `docker compose up -d && npm test -w @estanteca/api`
-- [ ] Test count: 2 tests pass (no silent deletions)
+- [x] `tests/functional/home.spec.ts`: `GET /` responde 200 com JSON
+- [x] `tests/integration/database.spec.ts`: a conexão usa o cliente `pg` e o banco atual é `estanteca_test`
+- [x] Gate check passes: `docker compose up -d && npm test -w @estanteca/api`
+- [x] Test count: 2 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. A suíte `integration` entrou no `adonisrc.ts`, que o kit não trazia. `PG_PASSWORD` é `string`, não `secret`, porque o driver `pg` espera texto. O `**Run api**` ganhou `--reporters=spec`: fora de um terminal o Japa usa o reporter de pontos e não imprime os títulos que as provas procuram.
 
 **Tests**: integration
 **Gate**: full

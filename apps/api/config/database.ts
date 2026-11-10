@@ -1,3 +1,4 @@
+import env from '#start/env'
 import app from '@adonisjs/core/services/app'
 import { defineConfig } from '@adonisjs/lucid'
 
@@ -5,23 +6,22 @@ const dbConfig = defineConfig({
   /**
    * Default connection used for all queries.
    */
-  connection: 'sqlite',
+  connection: 'pg',
 
   connections: {
     /**
-     * SQLite connection (default).
+     * PostgreSQL connection (default).
      */
-    sqlite: {
-      client: 'better-sqlite3',
+    pg: {
+      client: 'pg',
 
       connection: {
-        filename: app.tmpPath('db.sqlite3'),
+        host: env.get('PG_HOST'),
+        port: env.get('PG_PORT'),
+        user: env.get('PG_USER'),
+        password: env.get('PG_PASSWORD'),
+        database: env.get('PG_DB_NAME'),
       },
-
-      /**
-       * Required by Knex for SQLite defaults.
-       */
-      useNullAsDefault: true,
 
       migrations: {
         /**
@@ -46,31 +46,9 @@ const dbConfig = defineConfig({
          */
         rulesPaths: ['./database/schema_rules.js'],
       },
-    },
 
-    /**
-     * PostgreSQL connection.
-     * Install package to switch: npm install pg
-     */
-    // pg: {
-    //   client: 'pg',
-    //   connection: {
-    //     host: process.env.PG_HOST,
-    //     port: Number(process.env.PG_PORT || 5432),
-    //     user: process.env.PG_USER,
-    //     password: process.env.PG_PASSWORD,
-    //     database: process.env.PG_DB_NAME,
-    //   },
-    //   migrations: {
-    //     naturalSort: true,
-    //     paths: ['database/migrations'],
-    //   },
-    //   schemaGeneration: {
-    //     enabled: true,
-    //     rulesPaths: ['./database/schema_rules.js'],
-    //   },
-    //   debug: app.inDev,
-    // },
+      debug: app.inDev,
+    },
 
     /**
      * MySQL / MariaDB connection.
