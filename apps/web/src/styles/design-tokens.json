@@ -1,0 +1,93 @@
+{
+  "name": "Estanteca",
+  "version": 1,
+  "color": {
+    "themes": [
+      { "id": "light", "name": "Claro" },
+      { "id": "dark", "name": "Escuro" }
+    ],
+    "tokens": [
+      { "name": "surface", "value": { "light": "#f5efe0", "dark": "#1a1814" }, "usage": "Fundo da página. Papel pólen no tema claro, tinta no escuro." },
+      { "name": "surface-raised", "value": { "light": "#fffcf5", "dark": "#24211c" }, "usage": "Cards, menus, formulários e o painel da busca global." },
+      { "name": "line", "value": { "light": "#d8ccb4", "dark": "#3b362e" }, "usage": "Divisores e contorno de cards. Decorativo, não serve como borda de controle." },
+      { "name": "line-strong", "value": { "light": "#8c7f66", "dark": "#7a7160" }, "usage": "Borda de campos, checkboxes e botões secundários. Pelo menos 3:1 sobre surface e surface-raised nos dois temas." },
+      { "name": "ink", "value": { "light": "#221e18", "dark": "#efe8da" }, "usage": "Texto principal e títulos de livros, sobre surface e surface-raised." },
+      { "name": "ink-muted", "value": { "light": "#685e4f", "dark": "#ada493" }, "usage": "Metadados (autor, ano, páginas), texto de apoio e placeholders, sobre surface e surface-raised." },
+      { "name": "accent", "value": { "light": "#2b5b4b", "dark": "#8cc4ad" }, "usage": "Verde de encadernação, a única cor de destaque: ação principal, item ativo da navegação, links e anel de foco. Como texto, sobre surface, surface-raised ou accent-soft." },
+      { "name": "accent-soft", "value": { "light": "#dce7dd", "dark": "#1f3830" }, "usage": "Fundo de item selecionado e filtro ativo, sempre com texto accent." },
+      { "name": "on-accent", "value": { "light": "#fffcf5", "dark": "#13201b" }, "usage": "Texto e ícones sobre fundo accent (rótulo do botão principal)." },
+      { "name": "status-read", "value": { "light": "#85590c", "dark": "#e0b45a" }, "usage": "Status Lido (dourado de douração). Texto do chip sobre status-read-soft ou surface. Sempre com o rótulo." },
+      { "name": "status-read-soft", "value": { "light": "#f2e1b8", "dark": "#3a2c0f" }, "usage": "Fundo do chip Lido." },
+      { "name": "status-loaned", "value": { "light": "#2b4c86", "dark": "#9db7e6" }, "usage": "Status Emprestado (azul tinta). Texto do chip sobre status-loaned-soft ou surface. Sempre com o rótulo." },
+      { "name": "status-loaned-soft", "value": { "light": "#dde4f1", "dark": "#1d2a43" }, "usage": "Fundo do chip Emprestado." },
+      { "name": "status-overdue", "value": { "light": "#a12d27", "dark": "#ee9084" }, "usage": "Status Atrasado e erros de formulário (vermelho lacre). Texto sobre status-overdue-soft ou surface. Sempre com rótulo ou ícone." },
+      { "name": "status-overdue-soft", "value": { "light": "#f4d8d2", "dark": "#40201b" }, "usage": "Fundo do chip Atrasado e de alertas de erro." }
+    ]
+  },
+  "type": {
+    "fonts": [],
+    "families": {
+      "serif": "Literata, Georgia, \"Times New Roman\", serif",
+      "sans": "Geist, ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+      "mono": "\"Geist Mono\", ui-monospace, \"SF Mono\", Menlo, monospace"
+    },
+    "groups": [
+      {
+        "name": "Livros",
+        "family": "serif",
+        "note": "Literata, desenhada para leitura longa. Só para títulos de página e nomes de obras.",
+        "styles": [
+          { "name": "display", "fontSize": "40px", "lineHeight": "44px", "fontWeight": 600, "letterSpacing": "-0.015em", "sample": "Os livros que moram aqui", "usage": "Título de página (dashboard, perfil público, página do livro). Um por tela." },
+          { "name": "title", "fontSize": "28px", "lineHeight": "34px", "fontWeight": 600, "letterSpacing": "-0.01em", "sample": "Memórias Póstumas de Brás Cubas", "usage": "Título da obra na página do exemplar e do livro." },
+          { "name": "book-title", "fontSize": "17px", "lineHeight": "22px", "fontWeight": 600, "sample": "Grande Sertão: Veredas", "usage": "Título do livro em cards, listas e resultados de busca." }
+        ]
+      },
+      {
+        "name": "Interface",
+        "family": "sans",
+        "note": "Geist para tudo que é interface.",
+        "styles": [
+          { "name": "heading", "fontSize": "16px", "lineHeight": "24px", "fontWeight": 600, "sample": "Lendo agora", "usage": "Títulos de seção e de blocos do dashboard." },
+          { "name": "body", "fontSize": "15px", "lineHeight": "22px", "fontWeight": 400, "sample": "Você tem 3 livros na fila de leitura.", "usage": "Texto corrido, controles e campos." },
+          { "name": "caption", "fontSize": "13px", "lineHeight": "18px", "fontWeight": 500, "letterSpacing": "0.01em", "sample": "Machado de Assis · 1881", "usage": "Metadados, rótulos de campo e chips." }
+        ]
+      },
+      {
+        "name": "Dados",
+        "family": "mono",
+        "styles": [
+          { "name": "data", "fontSize": "13px", "lineHeight": "20px", "fontWeight": 400, "sample": "CDD B869.3 · 256 p. · 1ª ed.", "usage": "ISBN, CDD, páginas e códigos de exemplar, com algarismos tabulares." }
+        ]
+      }
+    ]
+  },
+  "spacing": {
+    "note": "Grade de 4px.",
+    "tokens": [
+      { "name": "space-1", "value": "4px", "usage": "Entre ícone e rótulo; entre título e autor no card." },
+      { "name": "space-2", "value": "8px", "usage": "Padding interno de controles e chips." },
+      { "name": "space-3", "value": "12px", "usage": "Entre itens relacionados e entre capas na grade." },
+      { "name": "space-4", "value": "16px", "usage": "Padding de cards; margem lateral mínima no mobile." },
+      { "name": "space-6", "value": "24px", "usage": "Entre blocos do dashboard em grade." },
+      { "name": "space-8", "value": "32px", "usage": "Entre seções de uma página." },
+      { "name": "space-12", "value": "48px", "usage": "Respiro de estados vazios e topo de páginas públicas." }
+    ]
+  },
+  "radius": {
+    "note": "Livros têm cantos quase retos; a interface em volta é suave.",
+    "tokens": [
+      { "name": "radius-cover", "value": "3px", "usage": "Capas e lombadas. Só nelas." },
+      { "name": "radius-sm", "value": "6px", "usage": "Campos, botões e chips de filtro." },
+      { "name": "radius-md", "value": "12px", "usage": "Cards, painéis e blocos do dashboard." },
+      { "name": "radius-full", "value": "9999px", "usage": "Chips de status, avatares e barra de progresso." }
+    ]
+  },
+  "shadow": {
+    "note": "A profundidade é das capas. Cards ficam planos, com line.",
+    "tokens": [
+      { "name": "shadow-cover", "value": { "light": "0 1px 2px #221e1814, 0 8px 18px -6px #221e1840", "dark": "0 1px 2px #00000080, 0 10px 22px -8px #000000c0" }, "usage": "Toda capa de livro, em grade, prateleira ou página do exemplar." },
+      { "name": "shadow-raised", "value": { "light": "0 4px 10px #221e1814, 0 16px 32px -8px #221e182e", "dark": "0 16px 32px -8px #000000cc" }, "usage": "Só o que flutua: menus, popovers, busca global e toasts." },
+      { "name": "focus-ring", "value": { "light": "0 0 0 2px #f5efe0, 0 0 0 4px #2b5b4b", "dark": "0 0 0 2px #1a1814, 0 0 0 4px #8cc4ad" }, "usage": "Foco de teclado: vão de 2px na cor da página e anel sólido de 2px em accent. Em todo elemento interativo." }
+    ]
+  }
+}

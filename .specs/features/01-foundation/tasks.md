@@ -283,9 +283,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `styles/tokens.test.ts` cobre: 15 cores no claro, 15 no escuro (seletor explícito e media query), 4 raios, 3 sombras por tema, 7 espaçamentos e `--spacing: 0.25rem`
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 7 tests pass (no silent deletions)
+- [x] `styles/tokens.test.ts` cobre: 15 cores no claro, 15 no escuro (seletor explícito e media query), 4 raios, 3 sombras por tema, 7 espaçamentos e `--spacing: 0.25rem`
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 7 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. O Tailwind v4 copia o valor de uma sombra do `@theme` para o utilitário, então redefinir `--shadow-cover` no escuro não mudaria `shadow-cover`: as sombras ficam em `@theme inline` apontando para `--theme-shadow-*`, que mudam com o tema. Cores, raios e `--spacing` ficam em `@theme static`, porque o Tailwind só emite as variáveis usadas por algum utilitário. O teste compila o `tokens.css` com o `compile` do pacote `tailwindcss` e confere variáveis e utilitários contra o `design-tokens.json`. O `body` passou a usar `surface` e `ink` no lugar das cores do `create-next-app`.
 
 **Tests**: unit
 **Gate**: quick

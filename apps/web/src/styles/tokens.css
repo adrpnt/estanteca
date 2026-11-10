@@ -1,0 +1,100 @@
+/*
+ * Tokens do design system Estanteca (versão 1). Os valores vêm de
+ * design-tokens.json, e tokens.test.ts confere os dois.
+ */
+
+@theme static {
+  --color-surface: #f5efe0;
+  --color-surface-raised: #fffcf5;
+  --color-line: #d8ccb4;
+  --color-line-strong: #8c7f66;
+  --color-ink: #221e18;
+  --color-ink-muted: #685e4f;
+  --color-accent: #2b5b4b;
+  --color-accent-soft: #dce7dd;
+  --color-on-accent: #fffcf5;
+  --color-status-read: #85590c;
+  --color-status-read-soft: #f2e1b8;
+  --color-status-loaned: #2b4c86;
+  --color-status-loaned-soft: #dde4f1;
+  --color-status-overdue: #a12d27;
+  --color-status-overdue-soft: #f4d8d2;
+
+  --radius-cover: 3px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-full: 9999px;
+
+  --spacing: 0.25rem;
+}
+
+/*
+ * O Tailwind copia o valor de uma sombra do @theme para o utilitário, então
+ * redefinir --shadow-* no tema escuro não mudaria shadow-cover. Os utilitários
+ * apontam para --theme-shadow-*, que mudam com o tema.
+ */
+@theme inline {
+  --shadow-cover: var(--theme-shadow-cover);
+  --shadow-raised: var(--theme-shadow-raised);
+  --shadow-focus-ring: var(--theme-shadow-focus-ring);
+}
+
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+
+  --theme-shadow-cover: 0 1px 2px #221e1814, 0 8px 18px -6px #221e1840;
+  --theme-shadow-raised: 0 4px 10px #221e1814, 0 16px 32px -8px #221e182e;
+  --theme-shadow-focus-ring: 0 0 0 2px #f5efe0, 0 0 0 4px #2b5b4b;
+}
+
+:root[data-theme="dark"] {
+  --color-surface: #1a1814;
+  --color-surface-raised: #24211c;
+  --color-line: #3b362e;
+  --color-line-strong: #7a7160;
+  --color-ink: #efe8da;
+  --color-ink-muted: #ada493;
+  --color-accent: #8cc4ad;
+  --color-accent-soft: #1f3830;
+  --color-on-accent: #13201b;
+  --color-status-read: #e0b45a;
+  --color-status-read-soft: #3a2c0f;
+  --color-status-loaned: #9db7e6;
+  --color-status-loaned-soft: #1d2a43;
+  --color-status-overdue: #ee9084;
+  --color-status-overdue-soft: #40201b;
+
+  --theme-shadow-cover: 0 1px 2px #00000080, 0 10px 22px -8px #000000c0;
+  --theme-shadow-raised: 0 16px 32px -8px #000000cc;
+  --theme-shadow-focus-ring: 0 0 0 2px #1a1814, 0 0 0 4px #8cc4ad;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-surface: #1a1814;
+    --color-surface-raised: #24211c;
+    --color-line: #3b362e;
+    --color-line-strong: #7a7160;
+    --color-ink: #efe8da;
+    --color-ink-muted: #ada493;
+    --color-accent: #8cc4ad;
+    --color-accent-soft: #1f3830;
+    --color-on-accent: #13201b;
+    --color-status-read: #e0b45a;
+    --color-status-read-soft: #3a2c0f;
+    --color-status-loaned: #9db7e6;
+    --color-status-loaned-soft: #1d2a43;
+    --color-status-overdue: #ee9084;
+    --color-status-overdue-soft: #40201b;
+
+    --theme-shadow-cover: 0 1px 2px #00000080, 0 10px 22px -8px #000000c0;
+    --theme-shadow-raised: 0 16px 32px -8px #000000cc;
+    --theme-shadow-focus-ring: 0 0 0 2px #1a1814, 0 0 0 4px #8cc4ad;
+  }
+}
