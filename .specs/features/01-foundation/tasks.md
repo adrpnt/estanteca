@@ -727,9 +727,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `bottom-nav.test.tsx` cobre o critério 15 (BottomNav)
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 70 tests pass (no silent deletions)
+- [x] `bottom-nav.test.tsx` cobre o critério 15 (BottomNav)
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 70 tests pass (no silent deletions)
+
+**Status**: ✅ Complete
 
 **Tests**: unit
 **Gate**: quick
