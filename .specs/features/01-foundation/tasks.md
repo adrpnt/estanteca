@@ -375,9 +375,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `lib/format.test.ts` cobre: "1.234"; "1 livro" e "23 livros"; "4,5"; arredondamento ao meio ponto e limites 0 e 5; percentual arredondado e limitado entre 0 e 100
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 25 tests pass (no silent deletions)
+- [x] `lib/format.test.ts` cobre: "1.234"; "1 livro" e "23 livros"; "4,5"; arredondamento ao meio ponto e limites 0 e 5; percentual arredondado e limitado entre 0 e 100
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 25 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. `formatRating` usa no máximo uma casa decimal, como o design system ("4,5" e "4"), e `formatBooks(0)` dá "0 livros".
 
 **Tests**: unit
 **Gate**: quick
@@ -396,9 +398,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `lib/search.test.ts` cobre: "jose de alencar" encontra "José de Alencar"; busca em qualquer campo; sem correspondência; busca vazia
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 29 tests pass (no silent deletions)
+- [x] `lib/search.test.ts` cobre: "jose de alencar" encontra "José de Alencar"; busca em qualquer campo; sem correspondência; busca vazia
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 29 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. A spec não define a busca vazia: `matchesQuery` com busca vazia encontra qualquer livro (não filtra), e o SearchDialog só busca a partir de 3 caracteres.
 
 **Tests**: unit
 **Gate**: quick
@@ -417,9 +421,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `button.test.tsx` cobre os critérios 1 a 3 de ação, formulário e navegação
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 32 tests pass (no silent deletions)
+- [x] `button.test.tsx` cobre os critérios 1 a 3 de ação, formulário e navegação
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 32 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. As cores de borda ficam só nas variantes e o espaçamento lateral só nos tamanhos, porque o `cn()` não resolve utilitários conflitantes. O teste da variante padrão compara o botão sem `variant` com um `secondary` explícito, sem depender de nomes de classe.
 
 **Tests**: unit
 **Gate**: quick
@@ -438,9 +444,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `text-field.test.tsx` cobre os critérios 4 a 8
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 37 tests pass (no silent deletions)
+- [x] `text-field.test.tsx` cobre os critérios 4 a 8
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 37 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. É `'use client'` por causa do `useId`. Com erro, a borda fica em `status-overdue` também no foco, como no design system. A prop `prefix` substitui o atributo HTML de mesmo nome.
 
 **Tests**: unit
 **Gate**: quick
@@ -459,9 +467,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `filter-chip.test.tsx` cobre o critério 9
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 39 tests pass (no silent deletions)
+- [x] `filter-chip.test.tsx` cobre o critério 9
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 39 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. O check do chip selecionado é o SVG inline do design system (o traço do `Check` do Lucide), porque o `lucide-react` só entra na T24.
 
 **Tests**: unit
 **Gate**: quick
@@ -480,9 +490,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `stepper.test.tsx` cobre os critérios 10 e 11 e o caso de borda de `current` fora da lista
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 42 tests pass (no silent deletions)
+- [x] `stepper.test.tsx` cobre os critérios 10 e 11 e o caso de borda de `current` fora da lista
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 42 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. Os rótulos fora da etapa atual ficam `sr-only` com `@max-[520px]` sobre o `@container` do Stepper; o jsdom não avalia container queries, então esse corte fica para a conferência em `/design`.
 
 **Tests**: unit
 **Gate**: quick
@@ -501,9 +513,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `status-chip.test.tsx` cobre o critério 7 de livro, leitura e painel
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 44 tests pass (no silent deletions)
+- [x] `status-chip.test.tsx` cobre o critério 7 de livro, leitura e painel
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 44 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. `ReadingStatus` e `LoanStatus` são exportados para o BookCard e o SearchDialog. Gate de build da fase verde (44 testes no web, 2 na API).
 
 **Tests**: unit
 **Gate**: quick
