@@ -578,9 +578,9 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `shelf.test.tsx` cobre o critério 6 e o caso de borda de `count` maior que as capas
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 54 tests pass (no silent deletions)
+- [x] `shelf.test.tsx` cobre o critério 6 e o caso de borda de `count` maior que as capas
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 54 tests pass (no silent deletions)
 
 **Tests**: unit
 **Gate**: quick
