@@ -329,9 +329,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `lib/theme.test.ts` cobre: `parseTheme` para `light`, `dark`, `system`, ausente e inválido; o script aplica `light`/`dark` e não aplica nada para `system` ou inválido; `applyTheme` grava o cookie e ajusta `data-theme`
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 14 tests pass (no silent deletions)
+- [x] `lib/theme.test.ts` cobre: `parseTheme` para `light`, `dark`, `system`, ausente e inválido; o script aplica `light`/`dark` e não aplica nada para `system` ou inválido; `applyTheme` grava o cookie e ajusta `data-theme`
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 14 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. `applyTheme` muda o `data-theme` antes de gravar o cookie, e a gravação fica num `try`, para o tema trocar mesmo com cookies bloqueados.
 
 **Tests**: unit
 **Gate**: quick
