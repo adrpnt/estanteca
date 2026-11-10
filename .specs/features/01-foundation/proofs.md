@@ -1,6 +1,6 @@
 # 01-foundation proofs
 
-**HEAD**: 3e70ff3
+**HEAD**: a515330
 **Tree**: clean
 **Shell**: /bin/sh
 **Result**: 76 pass, 0 fail
@@ -89,19 +89,19 @@
 `Run api` - exit 0
 
 ```
-❯ Executed 2 migrations (58 ms)
+❯ Executed 2 migrations (48 ms)
 
 functional / Home (tests/functional/home.spec.ts)
-  ✔ GET / responde 200 com um corpo JSON (21.73ms)
+  ✔ GET / responde 200 com um corpo JSON (19.41ms)
 
 integration / Banco de dados (tests/integration/database.spec.ts)
-  ✔ conexão usa o cliente pg no banco estanteca_test (1.94ms)
-❯ Reverted 2 migrations (20 ms)
+  ✔ conexão usa o cliente pg no banco estanteca_test (1.11ms)
+❯ Reverted 2 migrations (11 ms)
 
  PASSED 
 
 Tests  2 passed (2)
- Time  60ms
+ Time  47ms
 npm notice run @estanteca/api@0.0.0 test
 npm notice run node ace test --reporters=spec
 ```
@@ -109,16 +109,16 @@ npm notice run node ace test --reporters=spec
 `Run web` - exit 0
 
 ```
- ✓ src/lib/toast.test.ts > toast queue > erro fica sem prazo, com ou sem ação 0ms
- ✓ src/lib/toast.test.ts > toast queue > o quarto aviso remove o mais antigo 0ms
- ✓ src/lib/toast.test.ts > toast queue > dismiss remove só o aviso indicado 0ms
+ ✓ src/lib/search.test.ts > matchesQuery > busca vazia encontra qualquer livro 0ms
+ ✓ src/lib/cn.test.ts > cn > junta as classes separadas por espaço 1ms
+ ✓ src/lib/cn.test.ts > cn > ignora valores falsos 0ms
 
  Test Files  27 passed (27)
       Tests  98 passed (98)
-   Start at  16:09:47
-   Duration  3.40s (environment 58%, tests 16%, setup 13%, import 11%, transform 2%)
+   Start at  16:10:14
+   Duration  3.28s (environment 60%, setup 13%, tests 13%, import 10%, transform 3%)
 
-Environment  jsdom was created 27 times · 11.42s total, 58% of tracked time
+Environment  jsdom was created 27 times · 11.57s total, 60% of tracked time
              create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
              learn more: https://vitest.dev/guide/improving-performance#test-environments
 
@@ -157,10 +157,10 @@ npm notice run next typegen && tsc --noEmit
 
 ```
 ▶ setup-env
-  ✔ roda no npm install da raiz (0.459875ms)
-  ✔ cria o .env a partir do .env.example com um APP_KEY novo quando falta (74.979417ms)
-  ✔ mantém intacto um .env que já existe (37.890792ms)
-✔ setup-env (113.891417ms)
+  ✔ roda no npm install da raiz (0.42925ms)
+  ✔ cria o .env a partir do .env.example com um APP_KEY novo quando falta (72.920166ms)
+  ✔ mantém intacto um .env que já existe (37.359791ms)
+✔ setup-env (111.271541ms)
 ℹ tests 3
 ℹ suites 1
 ℹ pass 3
@@ -168,5 +168,5 @@ npm notice run next typegen && tsc --noEmit
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 163.591958
+ℹ duration_ms 160.666042
 ```
