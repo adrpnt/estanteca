@@ -819,9 +819,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `lib/toast.test.ts` cobre: durações por tipo; erro sem prazo; quarto aviso remove o mais antigo; `dismiss`
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 89 tests pass (no silent deletions)
+- [x] `lib/toast.test.ts` cobre: durações por tipo; erro sem prazo; quarto aviso remove o mais antigo; `dismiss`
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 89 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. A fila é um store do módulo, lido por `useToasts()` com `useSyncExternalStore` (lista vazia no servidor). `toast.success` e `toast.error` devolvem o `id`; `toast.dismiss()` sem `id` limpa a fila.
 
 **Tests**: unit
 **Gate**: quick
