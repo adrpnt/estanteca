@@ -1,0 +1,21 @@
+services:
+  db:
+    image: postgres:18
+    environment:
+      POSTGRES_USER: estanteca
+      POSTGRES_PASSWORD: estanteca
+      POSTGRES_DB: estanteca
+    ports:
+      - '5432:5432'
+    volumes:
+      # A partir da 18, a imagem guarda os dados em /var/lib/postgresql/18/docker
+      - pgdata:/var/lib/postgresql
+      - ./docker/postgres/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U estanteca -d estanteca']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  pgdata:

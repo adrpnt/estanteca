@@ -4,6 +4,8 @@
 .DS_Store
 .AppleDouble
 .LSOverride
+*.swp
+Thumbs.db
 
 # Icon must end with two \r
 Icon
@@ -26,5 +28,41 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Editors
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+.fleet
+
+# Dependencies
+node_modules
+
+# Build outputs
+build
+dist
+.turbo
+
+# Secrets
+.env
+.env.local
+.env.production.local
+.env.development.local
+
+# Temp files
+/tmp
+
+# Logs
+npm-debug.log
+yarn-error.log
+*.log
+
+# Frontend compiled assets
+public/assets
+
 # Referências locais (prints com dados pessoais e telas de terceiros)
 .specs/references/
+
+# Claude
+.claude/
