@@ -913,10 +913,10 @@ Proof: run api | ✔ GET / responde 200 com um corpo JSON
 Proof: run api | ✔ conexão usa o cliente pg no banco estanteca_test
 
 **C4** - `npm test` na raiz roda Japa e Vitest e termina com 0 (FOUND-03, AC 4)
-Proof: `npm test`
+Proof: `out=$(npm test 2>&1) && echo "$out" | grep -q "@estanteca/api:test: .*PASSED" && echo "$out" | grep -q "@estanteca/web:test: .*Tests.*passed"`
 
 **C5** - `npm run lint` e `npm run typecheck` verificam as duas apps e terminam com 0 (FOUND-03, AC 5)
-Proof: `npm run lint && npm run typecheck`
+Proof: `out=$(npm run lint 2>&1 && npm run typecheck 2>&1) && for t in api:lint web:lint api:typecheck web:typecheck; do echo "$out" | grep -q "@estanteca/$t:" || exit 1; done`
 
 **C6** - Chamar uma rota inexistente no cliente tipado falha no typecheck (FOUND-04, AC 6)
 Proof: `npm run typecheck -w @estanteca/web`
