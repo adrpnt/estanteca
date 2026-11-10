@@ -191,8 +191,10 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `npm run dev -w @estanteca/web` serve `http://localhost:3000`
-- [ ] Gate check passes: `npm run build && npm run typecheck && npm run lint && npm test`
+- [x] `npm run dev -w @estanteca/web` serve `http://localhost:3000`
+- [x] Gate check passes: `npm run build && npm run typecheck && npm run lint && npm test`
+
+**Status**: ✅ Complete. O `create-next-app` 16.4 gera o Tailwind com `@tailwindcss/turbopack` (não `@tailwindcss/postcss`) e liga `cacheComponents` e `partialPrefetching` por padrão; ficou como gerado. `agentRules: false` impede o `next dev` de criar `AGENTS.md` ao detectar um agente. `typecheck` roda `next typegen` antes do `tsc`, porque `LayoutProps` vem dos tipos gerados pelo Next. O `turbo.json` guarda `.next/**` como saída do build. O placeholder do kit (`README.md`, `.gitkeep`) saiu, e o código gerado foi formatado com o Prettier do repositório.
 
 **Tests**: none
 **Gate**: build
@@ -1070,7 +1072,7 @@ Proof: run web | ✓ Stepper > limita current fora da lista
 
 The feature's live state, written as it happens - a compaction gives no warning.
 
-**Settled mid-build:** execução inline, sem sub-agentes, e só quando o usuário pedir - user: "Aprovo as tarefas, e a execução será inline, mas não execute nada agora." · O `**Build**` falha antes da T1 porque o repositório não tem `package.json`; a T1 segue e `validate_tasks.py --execute` precisa passar verde antes da T2 - user: "Seguir e validar após a T1 (Recomendado)" · Planejamento e modelos de PR entram em dois commits antes da T1 (`docs` com `.specs/`, `chore` com `.github/`) - user: "Dois commits antes da T1 (Recomendado)"
+**Settled mid-build:** o `next dev` criava `apps/web/AGENTS.md` ao detectar um agente; desligado com `agentRules: false` no `next.config.ts` - user: "Desligar (Recomendado)" · execução inline, sem sub-agentes, e só quando o usuário pedir - user: "Aprovo as tarefas, e a execução será inline, mas não execute nada agora." · O `**Build**` falha antes da T1 porque o repositório não tem `package.json`; a T1 segue e `validate_tasks.py --execute` precisa passar verde antes da T2 - user: "Seguir e validar após a T1 (Recomendado)" · Planejamento e modelos de PR entram em dois commits antes da T1 (`docs` com `.specs/`, `chore` com `.github/`) - user: "Dois commits antes da T1 (Recomendado)"
 **Dispatched:** none
 **Walked:** none
 
