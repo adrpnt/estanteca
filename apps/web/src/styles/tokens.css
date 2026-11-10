@@ -37,6 +37,11 @@
   --shadow-cover: var(--theme-shadow-cover);
   --shadow-raised: var(--theme-shadow-raised);
   --shadow-focus-ring: var(--theme-shadow-focus-ring);
+
+  /* Variáveis criadas pelo next/font em app/fonts.ts. */
+  --font-serif: var(--font-literata), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
 }
 
 :root {

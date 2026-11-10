@@ -1,8 +1,13 @@
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { compile } from 'tailwindcss'
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import tokens from './design-tokens.json'
+
+vi.mock('next/font/google', () => {
+  const font = (options: Record<string, unknown>) => ({ variable: options.variable, options })
+  return { Literata: font, Geist: font, Geist_Mono: font }
+})
 
 const source = readFileSync(join(import.meta.dirname, 'tokens.css'), 'utf8')
 
@@ -19,6 +24,9 @@ const candidates = [
   ...radii.map(({ name }) => radiusUtility(name)),
   ...shadows.map(({ name }) => shadowName(name)),
   'p-4',
+  'font-serif',
+  'font-sans',
+  'font-mono',
 ]
 
 const css = (await compile(`@tailwind utilities;\n${source}`)).build(candidates)
@@ -100,6 +108,30 @@ describe('tokens', () => {
     for (const { name, value } of spaces) {
       const step = Number(name.replace('space-', ''))
       expect(`${step * 4}px`, name).toBe(value)
+    }
+  })
+
+  it('mapeia serif, sans e mono para as fontes do next/font', async () => {
+    const { literata, geist, geistMono } = (await import('@/app/fonts')) as unknown as Record<
+      string,
+      { variable: string; options: Record<string, unknown> }
+    >
+
+    expect(literata.options).toMatchObject({ variable: '--font-literata', axes: ['opsz'] })
+    expect(geist.options).toMatchObject({ variable: '--font-geist' })
+    expect(geistMono.options).toMatchObject({ variable: '--font-geist-mono' })
+
+    const families = tokens.type.families
+    const mapping = [
+      ['serif', literata, families.serif],
+      ['sans', geist, families.sans],
+      ['mono', geistMono, families.mono],
+    ] as const
+    for (const [family, font, stack] of mapping) {
+      const fallback = stack.slice(stack.indexOf(',') + 1).trim()
+      expect(block(css, `.font-${family}`), family).toContain(
+        `font-family: var(${font.variable}), ${fallback};`
+      )
     }
   })
 

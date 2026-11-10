@@ -306,9 +306,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `styles/tokens.test.ts` cobre o mapeamento das três famílias para as variáveis do `next/font`
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 8 tests pass (no silent deletions)
+- [x] `styles/tokens.test.ts` cobre o mapeamento das três famílias para as variáveis do `next/font`
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 8 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. O mapeamento `--font-serif/sans/mono` fica no `tokens.css`, em `@theme inline`, com as pilhas de reserva do `tokens.json`; saiu do `globals.css` junto com o `font-family: Arial` do `body`, e o `html` herda a Geist pelo `--default-font-family` do Tailwind. O teste simula `next/font/google` e confere que os utilitários usam as variáveis declaradas em `app/fonts.ts`. O cache de build do Turbopack (`.next/cache/turbopack`) gerou o CSS com o `globals.css` da versão anterior no primeiro build depois da edição; o build seguinte saiu certo.
 
 **Tests**: unit
 **Gate**: quick
