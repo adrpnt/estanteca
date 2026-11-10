@@ -375,9 +375,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `lib/format.test.ts` cobre: "1.234"; "1 livro" e "23 livros"; "4,5"; arredondamento ao meio ponto e limites 0 e 5; percentual arredondado e limitado entre 0 e 100
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 25 tests pass (no silent deletions)
+- [x] `lib/format.test.ts` cobre: "1.234"; "1 livro" e "23 livros"; "4,5"; arredondamento ao meio ponto e limites 0 e 5; percentual arredondado e limitado entre 0 e 100
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 25 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. `formatRating` usa no máximo uma casa decimal, como o design system ("4,5" e "4"), e `formatBooks(0)` dá "0 livros".
 
 **Tests**: unit
 **Gate**: quick
