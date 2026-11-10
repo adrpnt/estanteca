@@ -599,9 +599,9 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `rating.test.tsx` cobre os critérios 8 a 10
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 58 tests pass (no silent deletions)
+- [x] `rating.test.tsx` cobre os critérios 8 a 10
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 58 tests pass (no silent deletions)
 
 **Tests**: unit
 **Gate**: quick
