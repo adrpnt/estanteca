@@ -536,9 +536,9 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `book-cover.test.tsx` cobre os critérios 1 a 3
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 49 tests pass (no silent deletions)
+- [x] `book-cover.test.tsx` cobre os critérios 1 a 3
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 49 tests pass (no silent deletions)
 
 **Tests**: unit
 **Gate**: quick
