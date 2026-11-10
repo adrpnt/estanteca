@@ -3,7 +3,8 @@ import { cn } from '@/lib/cn'
 import { formatBooks } from '@/lib/format'
 
 type ShelfProps = {
-  title: ReactNode
+  /** Também nomeia a área das capas: "Livros da estante {title}". */
+  title: string
   description?: ReactNode
   /** Total da estante, quando a prateleira mostra só parte. */
   count?: number
@@ -26,7 +27,6 @@ export function Shelf({
   const Heading = `h${headingLevel}` as const
   const books = Children.toArray(children)
   const total = count ?? books.length
-  const name = typeof title === 'string' ? title : 'estante'
 
   return (
     <section aria-labelledby={headingId} className={cn('grid min-w-0 gap-3', className)}>
@@ -53,7 +53,7 @@ export function Shelf({
       </div>
       <div
         role="region"
-        aria-label={`Livros da estante ${name}`}
+        aria-label={`Livros da estante ${title}`}
         tabIndex={0}
         className="snap-x snap-proximity overflow-x-auto overscroll-x-contain rounded-sm pb-3 [scrollbar-width:thin] focus-visible:shadow-focus-ring focus-visible:outline-2 focus-visible:outline-transparent"
       >

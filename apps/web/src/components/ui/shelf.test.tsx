@@ -17,6 +17,8 @@ describe('Shelf', () => {
     expect(screen.getByRole('heading', { level: 2, name: 'Cabeceira' })).toBeTruthy()
 
     const area = screen.getByRole('region', { name: 'Livros da estante Cabeceira' })
+    // @ts-expect-error o título nomeia a área das capas, então só aceita texto
+    expect(<Shelf title={<em>Cabeceira</em>}>{null}</Shelf>).toBeTruthy()
     await user.tab()
     expect(document.activeElement).toBe(area)
     expect(screen.getAllByRole('listitem')).toHaveLength(1)

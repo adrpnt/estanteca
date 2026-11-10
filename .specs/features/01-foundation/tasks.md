@@ -1119,6 +1119,9 @@ Proof: `node --test scripts/setup-env.test.mjs`
 **C72** - A Shelf não conta nem desenha filhos vazios (`false`, `null`) (UI-12, AC 6)
 Proof: run web | ✓ Shelf > não conta nem desenha filhos vazios
 
+**C73** - O `title` da Shelf só aceita texto, porque nomeia a área das capas ("Livros da estante {título}") (UI-12, AC 6)
+Proof: `npm run typecheck -w @estanteca/web`
+
 ---
 
 ## Handoff
