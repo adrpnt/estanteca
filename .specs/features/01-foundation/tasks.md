@@ -796,9 +796,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `search-dialog.test.tsx` cobre os critérios 1 a 7 de busca global e avisos
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 84 tests pass (no silent deletions)
+- [x] `search-dialog.test.tsx` cobre os critérios 1 a 7 de busca global e avisos
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 84 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. O painel fica dentro do `Dialog.Overlay`, então o Radix trata Esc e clique fora e devolve o foco a quem abriu a busca. O nome "Busca" vem de um `Dialog.Title` `sr-only`. ⌘K e Ctrl+K funcionam nos dois sistemas, como no design system. O resultado ativo volta ao primeiro quando a busca muda, ajustado no render e não num efeito. A capa `xs` das opções usa `style` para os 32px, porque o `cn()` não resolve a largura conflitante.
 
 **Tests**: unit
 **Gate**: quick
