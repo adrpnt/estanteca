@@ -24,7 +24,8 @@ export function Shelf({
 }: ShelfProps) {
   const headingId = useId()
   const Heading = `h${headingLevel}` as const
-  const total = count ?? Children.count(children)
+  const books = Children.toArray(children)
+  const total = count ?? books.length
   const name = typeof title === 'string' ? title : 'estante'
 
   return (
@@ -57,8 +58,10 @@ export function Shelf({
         className="snap-x snap-proximity overflow-x-auto overscroll-x-contain rounded-sm pb-3 [scrollbar-width:thin] focus-visible:shadow-focus-ring focus-visible:outline-2 focus-visible:outline-transparent"
       >
         <ul className="m-0 box-border flex w-max min-w-full list-none items-end gap-3 border-b-6 border-line px-4 pt-4 pb-0">
-          {Children.map(children, (child) => (
-            <li className="flex snap-start">{child}</li>
+          {books.map((book, index) => (
+            <li key={index} className="flex snap-start">
+              {book}
+            </li>
           ))}
         </ul>
       </div>

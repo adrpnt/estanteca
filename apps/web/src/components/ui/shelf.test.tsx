@@ -22,6 +22,20 @@ describe('Shelf', () => {
     expect(screen.getAllByRole('listitem')).toHaveLength(1)
   })
 
+  it('não conta nem desenha filhos vazios', () => {
+    const later = false
+    render(
+      <Shelf title="Cabeceira">
+        {covers(['Dom Casmurro'])}
+        {later && covers(['Iracema'])}
+        {null}
+      </Shelf>
+    )
+
+    expect(screen.getByText('1 livro')).toBeTruthy()
+    expect(screen.getAllByRole('listitem')).toHaveLength(1)
+  })
+
   it('conta as capas no plural', () => {
     render(<Shelf title="Lidos">{covers(['Dom Casmurro', 'Iracema', 'O Cortiço'])}</Shelf>)
 
