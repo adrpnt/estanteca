@@ -704,9 +704,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `side-nav.test.tsx` cobre os critérios 15 (SideNav), 16 e 17
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 69 tests pass (no silent deletions)
+- [x] `side-nav.test.tsx` cobre os critérios 15 (SideNav), 16 e 17
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 69 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. O `radix-ui` entrou no web nesta tarefa. Recolhida, a SideNav troca o `title` do design system pelo Tooltip do Radix, à direita do link; um `Tooltip.Provider` próprio envolve as listas, porque o Tooltip exige um Provider acima dele.
 
 **Tests**: unit
 **Gate**: quick
