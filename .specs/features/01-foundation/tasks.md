@@ -536,9 +536,9 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `book-cover.test.tsx` cobre os critérios 1 a 3
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 49 tests pass (no silent deletions)
+- [x] `book-cover.test.tsx` cobre os critérios 1 a 3
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 49 tests pass (no silent deletions)
 
 **Tests**: unit
 **Gate**: quick
@@ -557,9 +557,9 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `book-card.test.tsx` cobre os critérios 4 e 5
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 51 tests pass (no silent deletions)
+- [x] `book-card.test.tsx` cobre os critérios 4 e 5
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 51 tests pass (no silent deletions)
 
 **Tests**: unit
 **Gate**: quick
@@ -578,9 +578,9 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `shelf.test.tsx` cobre o critério 6 e o caso de borda de `count` maior que as capas
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 54 tests pass (no silent deletions)
+- [x] `shelf.test.tsx` cobre o critério 6 e o caso de borda de `count` maior que as capas
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 54 tests pass (no silent deletions)
 
 **Tests**: unit
 **Gate**: quick
@@ -599,9 +599,9 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `rating.test.tsx` cobre os critérios 8 a 10
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 58 tests pass (no silent deletions)
+- [x] `rating.test.tsx` cobre os critérios 8 a 10
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 58 tests pass (no silent deletions)
 
 **Tests**: unit
 **Gate**: quick
@@ -620,9 +620,9 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `progress-bar.test.tsx` cobre os critérios 11 e 12
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 60 tests pass (no silent deletions)
+- [x] `progress-bar.test.tsx` cobre os critérios 11 e 12
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 60 tests pass (no silent deletions)
 
 **Tests**: unit
 **Gate**: quick
@@ -641,9 +641,9 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `stat.test.tsx` cobre o critério 13 e o valor visível quando não é `sensitive`
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 62 tests pass (no silent deletions)
+- [x] `stat.test.tsx` cobre o critério 13 e o valor visível quando não é `sensitive`
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 62 tests pass (no silent deletions)
 
 **Tests**: unit
 **Gate**: quick
@@ -662,9 +662,9 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `empty-state.test.tsx` cobre o critério 14
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 64 tests pass (no silent deletions)
+- [x] `empty-state.test.tsx` cobre o critério 14
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 64 tests pass (no silent deletions)
 
 **Tests**: unit
 **Gate**: quick
@@ -683,9 +683,9 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `skeleton.test.tsx` cobre o critério 15 nas quatro variantes
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 65 tests pass (no silent deletions)
+- [x] `skeleton.test.tsx` cobre o critério 15 nas quatro variantes
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 65 tests pass (no silent deletions)
 
 **Tests**: unit
 **Gate**: quick
