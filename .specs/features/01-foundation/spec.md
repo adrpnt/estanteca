@@ -67,6 +67,7 @@ A Estanteca tem escopo e design system aprovados, mas nenhum código: o reposit�
 4. WHEN o desenvolvedor roda `npm test` na raiz THEN o sistema SHALL executar os testes da API (Japa) e do web (Vitest) e terminar com código 0.
 5. WHEN o desenvolvedor roda `npm run lint` e `npm run typecheck` na raiz THEN o sistema SHALL verificar as duas apps e terminar com código 0.
 6. The web SHALL ter um cliente da API tipado a partir das rotas da API, de modo que chamar uma rota inexistente falhe no `npm run typecheck`.
+7. WHEN o desenvolvedor roda `npm install` na raiz sem `apps/api/.env` THEN o sistema SHALL criar esse arquivo a partir de `apps/api/.env.example` com um `APP_KEY` novo, e IF `apps/api/.env` já existe THEN o sistema SHALL mantê-lo intacto.
 
 **Independent Test**: clonar, `docker compose up -d`, `npm install`, `npm run dev`; abrir as duas URLs; rodar `npm test`.
 
@@ -210,6 +211,7 @@ A Estanteca tem escopo e design system aprovados, mas nenhum código: o reposit�
 | FOUND-02 | P1: Monorepo rodando localmente (3) | Tasks | In Tasks |
 | FOUND-03 | P1: Monorepo rodando localmente (4, 5) | Tasks | In Tasks |
 | FOUND-04 | P1: Monorepo rodando localmente (6) | Tasks | In Tasks |
+| FOUND-05 | P1: Monorepo rodando localmente (7) | Tasks | In Tasks |
 | TOK-01 | P1: Tokens, fontes e tema (1, 2, 3) | Tasks | In Tasks |
 | TOK-02 | P1: Tokens, fontes e tema (4) | Tasks | In Tasks |
 | THEME-01 | P1: Tokens, fontes e tema (5, 6, 7, 8) | Tasks | In Tasks |
@@ -232,7 +234,7 @@ A Estanteca tem escopo e design system aprovados, mas nenhum código: o reposit�
 | UI-17 | P1: Livro, leitura e painel (14, 15) EmptyState e Skeleton | Tasks | In Tasks |
 | DSN-01 | P1: Vitrine `/design` (1, 2) | Tasks | In Tasks |
 
-**Coverage:** 25 total, 25 mapped to tasks, 0 unmapped
+**Coverage:** 26 total, 26 mapped to tasks, 0 unmapped
 
 ---
 

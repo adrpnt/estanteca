@@ -880,21 +880,24 @@ T34 → T35
 
 ### T35: README da raiz
 
-**What**: Escrever o `README.md` da raiz com pré-requisitos (Node 24, npm 12, Docker), os comandos do clone ao `npm run dev`, os scripts da raiz e onde fica a vitrine.
-**Where**: `README.md`
+**What**: Escrever o `README.md` da raiz com pré-requisitos (Node 24, npm 12, Docker), os comandos do clone ao `npm run dev`, os scripts da raiz e onde fica a vitrine. O `postinstall` da raiz roda `scripts/setup-env.mjs`, que cria `apps/api/.env` a partir do `.env.example` com um `APP_KEY` novo quando o arquivo não existe.
+**Where**: `README.md`, `package.json`, `scripts/setup-env.mjs`, `scripts/setup-env.test.mjs`
 **Depends on**: T34
-**Reuses**: nada
-**Requirement**: FOUND-01
+**Reuses**: formato do `APP_KEY` do `node ace generate:key` (32 caracteres URL-safe)
+**Requirement**: FOUND-01, FOUND-05
 
 **Done when**:
 
-- [ ] Do clone ao `npm run dev` em no máximo 4 comandos
-- [ ] Gate check passes: `npm run build && npm run typecheck && npm run lint && npm test`
+- [x] Do clone ao `npm run dev` em no máximo 4 comandos
+- [x] `scripts/setup-env.test.mjs` cobre: cria o `.env` com `APP_KEY` novo quando falta; mantém intacto um `.env` existente
+- [x] Gate check passes: `npm run build && npm run typecheck && npm run lint && npm test`
 
-**Tests**: none
+**Status**: ✅ Complete. O README tem pré-requisitos, os 4 comandos (clone, `npm install`, `docker compose up -d`, `npm run dev`), os scripts da raiz, a vitrine e a estrutura. O `postinstall` roda `scripts/setup-env.mjs`, que gera o `APP_KEY` com `randomBytes(24)` em base64url (32 caracteres URL-safe, o formato do `node ace generate:key`) e grava com `wx`, sem sobrescrever. Conferido num clone novo do repositório: o `npm install` (npm 12) rodou o `postinstall`, criou o `.env` e o `node scripts/smoke-dev.mjs` viu a API e o web em 200. Gate de build verde (97 testes no web, 2 na API, 2 do `setup-env`).
+
+**Tests**: unit (`node --test`, sem dependência nova)
 **Gate**: build
 
-**Commit**: `docs: add setup instructions`
+**Commit**: `chore: create the API env on install and document the setup`
 
 ---
 
@@ -1110,13 +1113,16 @@ Proof: run web | ✓ Shelf > usa count como total quando é maior que as capas
 **C70** - O Stepper limita `current` ao primeiro ou ao último passo (edge case)
 Proof: run web | ✓ Stepper > limita current fora da lista
 
+**C71** - `npm install` cria `apps/api/.env` com um `APP_KEY` novo quando falta e mantém um `.env` existente (FOUND-05, AC 7)
+Proof: `node --test scripts/setup-env.test.mjs`
+
 ---
 
 ## Handoff
 
 The feature's live state, written as it happens - a compaction gives no warning.
 
-**Settled mid-build:** o `next dev` criava `apps/web/AGENTS.md` ao detectar um agente; desligado com `agentRules: false` no `next.config.ts` - user: "Desligar (Recomendado)" · execução inline, sem sub-agentes, e só quando o usuário pedir - user: "Aprovo as tarefas, e a execução será inline, mas não execute nada agora." · O `**Build**` falha antes da T1 porque o repositório não tem `package.json`; a T1 segue e `validate_tasks.py --execute` precisa passar verde antes da T2 - user: "Seguir e validar após a T1 (Recomendado)" · Planejamento e modelos de PR entram em dois commits antes da T1 (`docs` com `.specs/`, `chore` com `.github/`) - user: "Dois commits antes da T1 (Recomendado)"
+**Settled mid-build:** o `next dev` criava `apps/web/AGENTS.md` ao detectar um agente; desligado com `agentRules: false` no `next.config.ts` - user: "Desligar (Recomendado)" · execução inline, sem sub-agentes, e só quando o usuário pedir - user: "Aprovo as tarefas, e a execução será inline, mas não execute nada agora." · O `**Build**` falha antes da T1 porque o repositório não tem `package.json`; a T1 segue e `validate_tasks.py --execute` precisa passar verde antes da T2 - user: "Seguir e validar após a T1 (Recomendado)" · Planejamento e modelos de PR entram em dois commits antes da T1 (`docs` com `.specs/`, `chore` com `.github/`) - user: "Dois commits antes da T1 (Recomendado)" · Num clone novo a API não sobe sem `apps/api/.env` e `APP_KEY`; o `postinstall` da raiz cria o arquivo quando falta, para o README ficar em 4 comandos (critério 7 e FOUND-05 na spec, C71) - user: "postinstall cria o .env (Recomendado)"
 **Dispatched:** none
 **Walked:** none
 
