@@ -1,27 +1,27 @@
 # 01-foundation proofs
 
-**HEAD**: 23f0a31
+**HEAD**: 3e70ff3
 **Tree**: clean
 **Shell**: /bin/sh
-**Result**: 74 pass, 0 fail
+**Result**: 76 pass, 0 fail
 
 | Check | Proof | Result |
 | --- | --- | --- |
 | C1 | `node scripts/smoke-dev.mjs` | pass |
 | C2 | `run api / ✔ GET / responde 200 com um corpo JSON` | pass |
 | C3 | `run api / ✔ conexão usa o cliente pg no banco estanteca_test` | pass |
-| C4 | `npm test` | pass |
-| C5 | `npm run lint && npm run typecheck` | pass |
+| C4 | `out=$(npm test 2>&1) && echo "$out" / grep -q "@estanteca/api:test: .*PASSED" && echo "$out" / grep -q "@estan` | pass |
+| C5 | `out=$(npm run lint 2>&1 && npm run typecheck 2>&1) && for t in api:lint web:lint api:typecheck web:typecheck; ` | pass |
 | C6 | `npm run typecheck -w @estanteca/web` | pass |
 | C7 | `run web / ✓ tokens > define as 15 cores do tema claro com os valores do design system` | pass |
 | C8 | `run web / ✓ tokens > redefine as 15 cores em [data-theme="dark"]` | pass |
 | C9 | `run web / ✓ tokens > define raios, sombras por tema e espaçamentos com os valores do design system` | pass |
 | C10 | `run web / ✓ tokens > expõe os tokens no @theme e mantém --spacing em 0.25rem` | pass |
 | C11 | `run web / ✓ tokens > mapeia serif, sans e mono para as fontes do next/font` | pass |
-| C12 | `run web / ✓ tokens > aplica as cores escuras pela media query quando não há data-theme="light"` | pass |
+| C12 | `run web / ✓ tokens > sem preferência ou com system, o tema segue a media query, que aplica as cores escuras` | pass |
 | C13 | `run web / ✓ ThemeSwitcher > escolher Escuro aplica data-theme e grava o cookie sem recarregar` | pass |
 | C14 | `run web / ✓ ThemeSwitcher > escolher Automático remove data-theme e grava system` | pass |
-| C15 | `run web / ✓ THEME_SCRIPT > aplica o tema do cookie ao elemento raiz` | pass |
+| C15 | `run web / ✓ THEME_SCRIPT > o layout põe no head o script que aplica o tema do cookie ao elemento raiz` | pass |
 | C16 | `run web / ✓ parseTheme > trata valor inválido como system` | pass |
 | C17 | `run web / ✓ Button > usa type button e a variante secondary por padrão` | pass |
 | C18 | `run web / ✓ Button > só com ícone usa o aria-label como nome acessível` | pass |
@@ -48,13 +48,13 @@
 | C39 | `run web / ✓ SearchDialog > mostra os grupos com resultados e ignora os vazios` | pass |
 | C40 | `run web / ✓ SearchDialog > setas movem o resultado ativo e voltam ao início` | pass |
 | C41 | `run web / ✓ SearchDialog > Enter escolhe o resultado ativo` | pass |
-| C42 | `run web / ✓ SearchDialog > sem resultados mostra a mensagem de nada encontrado` | pass |
+| C42 | `run web / ✓ SearchDialog > sem resultados mostra a mensagem de nada encontrado ou o conteúdo de empty` | pass |
 | C43 | `run web / ✓ SearchDialog > Esc e clique fora fecham` | pass |
 | C44 | `run web / ✓ matchesQuery > jose de alencar encontra José de Alencar` | pass |
 | C45 | `run web / ✓ Toast > anuncia sucesso de forma educada e erro de forma assertiva` | pass |
 | C46 | `run web / ✓ Toast > ação e Fechar aviso removem o aviso` | pass |
 | C47 | `run web / ✓ Toast > sucesso some em 5 segundos e com ação em 8` | pass |
-| C48 | `run web / ✓ Toast > ponteiro sobre o aviso pausa a contagem` | pass |
+| C48 | `run web / ✓ Toast > ponteiro ou foco no aviso pausam a contagem` | pass |
 | C49 | `run web / ✓ Toast > erro fica até ser fechado` | pass |
 | C50 | `run web / ✓ toast queue > o quarto aviso remove o mais antigo` | pass |
 | C51 | `run web / ✓ BookCover > sem src mostra título e autor` | pass |
@@ -63,14 +63,14 @@
 | C54 | `run web / ✓ BookCard > com href o título é um link para href` | pass |
 | C55 | `run web / ✓ BookCard > aciona actions sem acionar o link` | pass |
 | C56 | `run web / ✓ Shelf > mostra a contagem e nomeia a área das capas` | pass |
-| C57 | `run web / ✓ StatusChip > mostra o texto de cada um dos 7 status` | pass |
+| C57 | `run web / ✓ StatusChip > mostra o texto de cada um dos 7 status ou o label` | pass |
 | C58 | `run web / ✓ Rating > nomeia a nota com vírgula decimal ou Sem nota` | pass |
 | C59 | `run web / ✓ roundRating > arredonda ao meio ponto e limita entre 0 e 5` | pass |
 | C60 | `run web / ✓ Rating > com onChange oferece 10 opções e chama onChange` | pass |
 | C61 | `run web / ✓ ProgressBar > mostra as páginas e o percentual` | pass |
 | C62 | `run web / ✓ progress > limita o percentual entre 0 e 100` | pass |
 | C63 | `run web / ✓ Stat > sensível começa oculto e mostra o valor ao acionar o botão` | pass |
-| C64 | `run web / ✓ EmptyState > mostra o título como cabeçalho e a ação` | pass |
+| C64 | `run web / ✓ EmptyState > mostra o título como cabeçalho no nível de level e a ação` | pass |
 | C65 | `run web / ✓ Skeleton > fica escondido de leitores de tela em todas as variantes` | pass |
 | C66 | `run web / ✓ página /design > mostra uma seção para cada um dos 19 componentes e o seletor de tema` | pass |
 | C67 | `run web / ✓ página /design > chama notFound em produção` | pass |
@@ -78,6 +78,8 @@
 | C69 | `run web / ✓ Shelf > usa count como total quando é maior que as capas` | pass |
 | C70 | `run web / ✓ Stepper > limita current fora da lista` | pass |
 | C71 | `node --test scripts/setup-env.test.mjs` | pass |
+| C72 | `run web / ✓ Shelf > não conta nem desenha filhos vazios` | pass |
+| C73 | `npm run typecheck -w @estanteca/web` | pass |
 | Build | `npm run build` | pass |
 | Build | `npm run typecheck` | pass |
 | Build | `npm run lint` | pass |
@@ -87,19 +89,19 @@
 `Run api` - exit 0
 
 ```
-❯ Executed 2 migrations (57 ms)
+❯ Executed 2 migrations (58 ms)
 
 functional / Home (tests/functional/home.spec.ts)
-  ✔ GET / responde 200 com um corpo JSON (20.19ms)
+  ✔ GET / responde 200 com um corpo JSON (21.73ms)
 
 integration / Banco de dados (tests/integration/database.spec.ts)
-  ✔ conexão usa o cliente pg no banco estanteca_test (1.5ms)
+  ✔ conexão usa o cliente pg no banco estanteca_test (1.94ms)
 ❯ Reverted 2 migrations (20 ms)
 
  PASSED 
 
 Tests  2 passed (2)
- Time  61ms
+ Time  60ms
 npm notice run @estanteca/api@0.0.0 test
 npm notice run node ace test --reporters=spec
 ```
@@ -107,16 +109,16 @@ npm notice run node ace test --reporters=spec
 `Run web` - exit 0
 
 ```
- ✓ src/lib/search.test.ts > matchesQuery > busca vazia encontra qualquer livro 0ms
- ✓ src/lib/cn.test.ts > cn > junta as classes separadas por espaço 1ms
- ✓ src/lib/cn.test.ts > cn > ignora valores falsos 0ms
+ ✓ src/lib/toast.test.ts > toast queue > erro fica sem prazo, com ou sem ação 0ms
+ ✓ src/lib/toast.test.ts > toast queue > o quarto aviso remove o mais antigo 0ms
+ ✓ src/lib/toast.test.ts > toast queue > dismiss remove só o aviso indicado 0ms
 
  Test Files  27 passed (27)
-      Tests  97 passed (97)
-   Start at  15:56:17
-   Duration  3.26s (environment 59%, tests 14%, setup 13%, import 11%, transform 3%, worker 1%)
+      Tests  98 passed (98)
+   Start at  16:09:47
+   Duration  3.40s (environment 58%, tests 16%, setup 13%, import 11%, transform 2%)
 
-Environment  jsdom was created 27 times · 11.14s total, 59% of tracked time
+Environment  jsdom was created 27 times · 11.42s total, 58% of tracked time
              create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
              learn more: https://vitest.dev/guide/improving-performance#test-environments
 
@@ -130,44 +132,16 @@ npm notice run vitest run --reporter=verbose
 dev ok: api 200, web 200
 ```
 
-`npm test` - exit 0
+`out=$(npm test 2>&1) && echo "$out" / grep -q "@estanteca/api:test: .*PASSED" && echo "$out" / grep -q "@estan` - exit 0
 
 ```
-@estanteca/web:test:       Tests  97 passed (97)
-@estanteca/web:test:    Start at  15:56:22
-@estanteca/web:test:    Duration  3.40s (environment 60%, tests 14%, setup 13%, import 10%, transform 3%)
-@estanteca/web:test: 
-@estanteca/web:test: Environment  jsdom was created 27 times · 11.65s total, 60% of tracked time
-@estanteca/web:test:              create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
-@estanteca/web:test:              learn more: https://vitest.dev/guide/improving-performance#test-environments
-@estanteca/web:test: 
-
- Tasks:    4 successful, 4 total
-Cached:    2 cached, 4 total
-  Time:    3.902s 
-
-npm notice run estanteca@0.0.0 test
-npm notice run turbo test
+(no output)
 ```
 
-`npm run lint && npm run typecheck` - exit 0
+`out=$(npm run lint 2>&1 && npm run typecheck 2>&1) && for t in api:lint web:lint api:typecheck web:typecheck; ` - exit 0
 
 ```
-@estanteca/api:typecheck: npm notice run @estanteca/api@0.0.0 typecheck
-@estanteca/api:typecheck: npm notice run tsc --noEmit
-@estanteca/web:typecheck: npm notice run @estanteca/web@0.0.0 typecheck
-@estanteca/web:typecheck: npm notice run next typegen && tsc --noEmit
-@estanteca/web:typecheck: Generating route types...
-@estanteca/web:typecheck: ✓ Types generated successfully
-
- Tasks:    3 successful, 3 total
-Cached:    3 cached, 3 total
-  Time:    9ms >>> FULL TURBO
-
-npm notice run estanteca@0.0.0 lint
-npm notice run turbo lint
-npm notice run estanteca@0.0.0 typecheck
-npm notice run turbo typecheck
+(no output)
 ```
 
 `npm run typecheck -w @estanteca/web` - exit 0
@@ -183,15 +157,16 @@ npm notice run next typegen && tsc --noEmit
 
 ```
 ▶ setup-env
-  ✔ cria o .env a partir do .env.example com um APP_KEY novo quando falta (72.911959ms)
-  ✔ mantém intacto um .env que já existe (36.345292ms)
-✔ setup-env (109.801833ms)
-ℹ tests 2
+  ✔ roda no npm install da raiz (0.459875ms)
+  ✔ cria o .env a partir do .env.example com um APP_KEY novo quando falta (74.979417ms)
+  ✔ mantém intacto um .env que já existe (37.890792ms)
+✔ setup-env (113.891417ms)
+ℹ tests 3
 ℹ suites 1
-ℹ pass 2
+ℹ pass 3
 ℹ fail 0
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 158.169417
+ℹ duration_ms 163.591958
 ```
