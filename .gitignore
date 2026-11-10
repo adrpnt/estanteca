@@ -26,3 +26,5 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+# Referências locais (prints com dados pessoais e telas de terceiros)
+.specs/references/
