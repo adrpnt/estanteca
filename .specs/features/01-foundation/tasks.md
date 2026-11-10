@@ -750,9 +750,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `search-trigger.test.tsx` cobre o critério 18 (nome acessível, "⌘K" no macOS, "Ctrl K" nos demais)
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 73 tests pass (no silent deletions)
+- [x] `search-trigger.test.tsx` cobre o critério 18 (nome acessível, "⌘K" no macOS, "Ctrl K" nos demais)
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 73 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. O sistema é lido com `useSyncExternalStore`: no servidor vale "Ctrl K" e no cliente o atalho do sistema, sem divergência na hidratação. Até 480px de largura de tela, o botão fica só com a lupa e o texto vira `sr-only`.
 
 **Tests**: unit
 **Gate**: quick
