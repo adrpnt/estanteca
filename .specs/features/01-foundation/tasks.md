@@ -946,7 +946,7 @@ Proof: run web | ✓ ThemeSwitcher > escolher Escuro aplica data-theme e grava o
 Proof: run web | ✓ ThemeSwitcher > escolher Automático remove data-theme e grava system
 
 **C15** - Com cookie `light` ou `dark`, o script inline aplica o tema antes da primeira pintura (THEME-01, AC 7)
-Proof: run web | ✓ THEME_SCRIPT > aplica o tema do cookie ao elemento raiz
+Proof: run web | ✓ THEME_SCRIPT > o layout põe no head o script que aplica o tema do cookie ao elemento raiz
 
 **C16** - Cookie com valor inválido é tratado como `system` (THEME-01, AC 8)
 Proof: run web | ✓ parseTheme > trata valor inválido como system
