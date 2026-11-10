@@ -283,9 +283,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `styles/tokens.test.ts` cobre: 15 cores no claro, 15 no escuro (seletor explícito e media query), 4 raios, 3 sombras por tema, 7 espaçamentos e `--spacing: 0.25rem`
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 7 tests pass (no silent deletions)
+- [x] `styles/tokens.test.ts` cobre: 15 cores no claro, 15 no escuro (seletor explícito e media query), 4 raios, 3 sombras por tema, 7 espaçamentos e `--spacing: 0.25rem`
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 7 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. O Tailwind v4 copia o valor de uma sombra do `@theme` para o utilitário, então redefinir `--shadow-cover` no escuro não mudaria `shadow-cover`: as sombras ficam em `@theme inline` apontando para `--theme-shadow-*`, que mudam com o tema. Cores, raios e `--spacing` ficam em `@theme static`, porque o Tailwind só emite as variáveis usadas por algum utilitário. O teste compila o `tokens.css` com o `compile` do pacote `tailwindcss` e confere variáveis e utilitários contra o `design-tokens.json`. O `body` passou a usar `surface` e `ink` no lugar das cores do `create-next-app`.
 
 **Tests**: unit
 **Gate**: quick
@@ -304,9 +306,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `styles/tokens.test.ts` cobre o mapeamento das três famílias para as variáveis do `next/font`
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 8 tests pass (no silent deletions)
+- [x] `styles/tokens.test.ts` cobre o mapeamento das três famílias para as variáveis do `next/font`
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 8 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. O mapeamento `--font-serif/sans/mono` fica no `tokens.css`, em `@theme inline`, com as pilhas de reserva do `tokens.json`; saiu do `globals.css` junto com o `font-family: Arial` do `body`, e o `html` herda a Geist pelo `--default-font-family` do Tailwind. O teste simula `next/font/google` e confere que os utilitários usam as variáveis declaradas em `app/fonts.ts`. O cache de build do Turbopack (`.next/cache/turbopack`) gerou o CSS com o `globals.css` da versão anterior no primeiro build depois da edição; o build seguinte saiu certo.
 
 **Tests**: unit
 **Gate**: quick
@@ -325,9 +329,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `lib/theme.test.ts` cobre: `parseTheme` para `light`, `dark`, `system`, ausente e inválido; o script aplica `light`/`dark` e não aplica nada para `system` ou inválido; `applyTheme` grava o cookie e ajusta `data-theme`
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 14 tests pass (no silent deletions)
+- [x] `lib/theme.test.ts` cobre: `parseTheme` para `light`, `dark`, `system`, ausente e inválido; o script aplica `light`/`dark` e não aplica nada para `system` ou inválido; `applyTheme` grava o cookie e ajusta `data-theme`
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 14 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. `applyTheme` muda o `data-theme` antes de gravar o cookie, e a gravação fica num `try`, para o tema trocar mesmo com cookies bloqueados.
 
 **Tests**: unit
 **Gate**: quick
@@ -346,9 +352,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `theme-switcher.test.tsx` cobre: marca a opção do cookie atual; escolher "Escuro" aplica `data-theme="dark"` e grava o cookie sem recarregar; "Automático" remove `data-theme`
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 17 tests pass (no silent deletions)
+- [x] `theme-switcher.test.tsx` cobre: marca a opção do cookie atual; escolher "Escuro" aplica `data-theme="dark"` e grava o cookie sem recarregar; "Automático" remove `data-theme`
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 17 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. O seletor lê o cookie com `useSyncExternalStore`: no servidor vale `system` e no cliente vale o cookie, sem divergência na hidratação. O HTML pré-renderizado de `/` continua estático, com o script no `<head>` e sem `data-theme`. Gate de build da fase verde (17 testes no web, 2 na API).
 
 **Tests**: unit
 **Gate**: quick
