@@ -641,9 +641,9 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `stat.test.tsx` cobre o critério 13 e o valor visível quando não é `sensitive`
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 62 tests pass (no silent deletions)
+- [x] `stat.test.tsx` cobre o critério 13 e o valor visível quando não é `sensitive`
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 62 tests pass (no silent deletions)
 
 **Tests**: unit
 **Gate**: quick
