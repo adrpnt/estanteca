@@ -260,9 +260,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `node scripts/smoke-dev.mjs` imprime `dev ok: api 200, web 200` e sai com 0
-- [ ] Nenhum processo fica rodando depois do script
-- [ ] Gate check passes: `npm run build && npm run typecheck && npm run lint && npm test`
+- [x] `node scripts/smoke-dev.mjs` imprime `dev ok: api 200, web 200` e sai com 0
+- [x] Nenhum processo fica rodando depois do script
+- [x] Gate check passes: `npm run build && npm run typecheck && npm run lint && npm test`
+
+**Status**: ✅ Complete. O script roda `npm run dev -- --ui=stream` num grupo de processos próprio e encerra o grupo inteiro (SIGTERM, SIGKILL depois de 10 s). Falha logo se `:3333` ou `:3000` já respondem antes de subir, para a prova não passar com servidores de outra sessão.
 
 **Tests**: none
 **Gate**: build
