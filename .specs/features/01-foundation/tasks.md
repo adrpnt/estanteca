@@ -398,9 +398,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `lib/search.test.ts` cobre: "jose de alencar" encontra "José de Alencar"; busca em qualquer campo; sem correspondência; busca vazia
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 29 tests pass (no silent deletions)
+- [x] `lib/search.test.ts` cobre: "jose de alencar" encontra "José de Alencar"; busca em qualquer campo; sem correspondência; busca vazia
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 29 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. A spec não define a busca vazia: `matchesQuery` com busca vazia encontra qualquer livro (não filtra), e o SearchDialog só busca a partir de 3 caracteres.
 
 **Tests**: unit
 **Gate**: quick
