@@ -444,9 +444,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `text-field.test.tsx` cobre os critérios 4 a 8
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 37 tests pass (no silent deletions)
+- [x] `text-field.test.tsx` cobre os critérios 4 a 8
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 37 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. É `'use client'` por causa do `useId`. Com erro, a borda fica em `status-overdue` também no foco, como no design system. A prop `prefix` substitui o atributo HTML de mesmo nome.
 
 **Tests**: unit
 **Gate**: quick
