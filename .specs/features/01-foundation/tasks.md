@@ -620,9 +620,9 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `progress-bar.test.tsx` cobre os critérios 11 e 12
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 60 tests pass (no silent deletions)
+- [x] `progress-bar.test.tsx` cobre os critérios 11 e 12
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 60 tests pass (no silent deletions)
 
 **Tests**: unit
 **Gate**: quick
