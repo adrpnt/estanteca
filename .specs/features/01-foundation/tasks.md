@@ -490,9 +490,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `stepper.test.tsx` cobre os critérios 10 e 11 e o caso de borda de `current` fora da lista
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 42 tests pass (no silent deletions)
+- [x] `stepper.test.tsx` cobre os critérios 10 e 11 e o caso de borda de `current` fora da lista
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 42 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. Os rótulos fora da etapa atual ficam `sr-only` com `@max-[520px]` sobre o `@container` do Stepper; o jsdom não avalia container queries, então esse corte fica para a conferência em `/design`.
 
 **Tests**: unit
 **Gate**: quick
