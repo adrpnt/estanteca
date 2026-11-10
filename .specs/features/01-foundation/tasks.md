@@ -662,9 +662,9 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `empty-state.test.tsx` cobre o critério 14
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 64 tests pass (no silent deletions)
+- [x] `empty-state.test.tsx` cobre o critério 14
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 64 tests pass (no silent deletions)
 
 **Tests**: unit
 **Gate**: quick
