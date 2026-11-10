@@ -865,9 +865,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `design/page.test.tsx` cobre: 19 seções com os nomes dos componentes e o seletor de tema; 404 em produção
-- [ ] Gate check passes: `npm run build && npm run typecheck && npm run lint && npm test`
-- [ ] Test count: 97 tests pass (no silent deletions)
+- [x] `design/page.test.tsx` cobre: 19 seções com os nomes dos componentes e o seletor de tema; 404 em produção
+- [x] Gate check passes: `npm run build && npm run typecheck && npm run lint && npm test`
+- [x] Test count: 97 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. A página é server component e chama `notFound()` quando `NODE_ENV` é `production`; as demos com estado (SideNav, BottomNav, FilterChip, Rating de escolha, SearchTrigger, SearchDialog e Toast) ficam em `app/design/demos.tsx`, com `'use client'`, arquivo a mais que o "Where" pela fronteira entre servidor e cliente. SearchDialog e ActionMenu começam fechados: nas previews eles abrem dentro de iframes isolados, e abertos na carga prenderiam o foco e esconderiam o resto da página de leitores de tela. A busca da demo abre pelo SearchTrigger ou por ⌘K / Ctrl+K e filtra com `matchesQuery`. O Toast aparece pelo `Toaster`, com o botão "Mostrar avisos" disparando os três avisos da preview. `next start` responde 404 em `/design` e `next dev` responde 200 com as 19 seções. Gate de build verde (97 testes no web, 2 na API).
 
 **Tests**: unit
 **Gate**: build
