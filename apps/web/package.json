@@ -11,6 +11,8 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "@estanteca/api": "^0.0.0",
+    "@tuyau/core": "^1.3.0",
     "next": "16.4.6",
     "react": "19.3.0",
     "react-dom": "19.3.0"

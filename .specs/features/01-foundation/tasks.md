@@ -237,9 +237,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `npm run typecheck` na raiz passa
-- [ ] Remover o `@ts-expect-error` faz o typecheck falhar (verificado à mão e revertido)
-- [ ] Gate check passes: `npm run build && npm run typecheck && npm run lint && npm test`
+- [x] `npm run typecheck` na raiz passa
+- [x] Remover o `@ts-expect-error` faz o typecheck falhar (verificado à mão e revertido)
+- [x] Gate check passes: `npm run build && npm run typecheck && npm run lint && npm test`
+
+**Status**: ✅ Complete. O cliente usa `api.request('<nome da rota>', ...)`, cujo nome só aceita as rotas do registro. O tsconfig do web ganhou `experimentalDecorators`, porque o `tsc` segue os tipos do registro até os modelos Lucid da API (`database/schema.ts`), que usam decorators; o Next compila com SWC, então a opção só afeta a checagem.
 
 **Tests**: none
 **Gate**: build
