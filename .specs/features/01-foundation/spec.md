@@ -252,6 +252,6 @@ None - the product matches the source. Os componentes interativos trocam a imple
 
 ## Success Criteria
 
-- [ ] Do clone ao `npm run dev` com API e web no ar em menos de 5 comandos.
-- [ ] `npm test`, `npm run lint` e `npm run typecheck` verdes na raiz.
-- [ ] Os 19 componentes em `/design` batem com o design system nos dois temas, na sua conferência.
+- [x] Do clone ao `npm run dev` com API e web no ar em menos de 5 comandos. (4 comandos, conferido num clone novo)
+- [x] `npm test`, `npm run lint` e `npm run typecheck` verdes na raiz. (C4 e C5 em `proofs.md`)
+- [x] Os 19 componentes em `/design` batem com o design system nos dois temas, na sua conferência. - user: "Fiz a ocnferência visual de /design nos dois temas, está Ok." (2026-11-10)
