@@ -421,9 +421,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `button.test.tsx` cobre os critérios 1 a 3 de ação, formulário e navegação
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 32 tests pass (no silent deletions)
+- [x] `button.test.tsx` cobre os critérios 1 a 3 de ação, formulário e navegação
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 32 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. As cores de borda ficam só nas variantes e o espaçamento lateral só nos tamanhos, porque o `cn()` não resolve utilitários conflitantes. O teste da variante padrão compara o botão sem `variant` com um `secondary` explícito, sem depender de nomes de classe.
 
 **Tests**: unit
 **Gate**: quick
