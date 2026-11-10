@@ -213,10 +213,12 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `lib/cn.test.ts`: junta classes e ignora valores falsos
-- [ ] `npm test` na raiz roda Japa e Vitest e termina com 0
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 2 tests pass (no silent deletions)
+- [x] `lib/cn.test.ts`: junta classes e ignora valores falsos
+- [x] `npm test` na raiz roda Japa e Vitest e termina com 0
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 2 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. O alias `@` fica em `resolve.alias` do Vitest, sem `vite-tsconfig-paths`. Sem `globals: true`, o `vitest.setup.ts` chama `cleanup()` depois de cada teste.
 
 **Tests**: unit
 **Gate**: quick
