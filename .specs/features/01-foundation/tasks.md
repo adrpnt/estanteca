@@ -144,9 +144,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `docker compose up -d` deixa o serviço saudável
-- [ ] `docker compose exec db psql -U estanteca -lqt` lista `estanteca` e `estanteca_test`
-- [ ] Gate check passes: `npm run build && npm run typecheck && npm run lint && npm test`
+- [x] `docker compose up -d` deixa o serviço saudável
+- [x] `docker compose exec db psql -U estanteca -lqt` lista `estanteca` e `estanteca_test`
+- [x] Gate check passes: `npm run build && npm run typecheck && npm run lint && npm test`
+
+**Status**: ✅ Complete
 
 **Tests**: none
 **Gate**: build
