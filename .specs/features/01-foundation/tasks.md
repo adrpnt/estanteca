@@ -704,9 +704,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `side-nav.test.tsx` cobre os critérios 15 (SideNav), 16 e 17
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 69 tests pass (no silent deletions)
+- [x] `side-nav.test.tsx` cobre os critérios 15 (SideNav), 16 e 17
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 69 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. O `radix-ui` entrou no web nesta tarefa. Recolhida, a SideNav troca o `title` do design system pelo Tooltip do Radix, à direita do link; um `Tooltip.Provider` próprio envolve as listas, porque o Tooltip exige um Provider acima dele.
 
 **Tests**: unit
 **Gate**: quick
@@ -725,9 +727,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `bottom-nav.test.tsx` cobre o critério 15 (BottomNav)
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 70 tests pass (no silent deletions)
+- [x] `bottom-nav.test.tsx` cobre o critério 15 (BottomNav)
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 70 tests pass (no silent deletions)
+
+**Status**: ✅ Complete
 
 **Tests**: unit
 **Gate**: quick
@@ -746,9 +750,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `search-trigger.test.tsx` cobre o critério 18 (nome acessível, "⌘K" no macOS, "Ctrl K" nos demais)
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 73 tests pass (no silent deletions)
+- [x] `search-trigger.test.tsx` cobre o critério 18 (nome acessível, "⌘K" no macOS, "Ctrl K" nos demais)
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 73 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. O sistema é lido com `useSyncExternalStore`: no servidor vale "Ctrl K" e no cliente o atalho do sistema, sem divergência na hidratação. Até 480px de largura de tela, o botão fica só com a lupa e o texto vira `sr-only`.
 
 **Tests**: unit
 **Gate**: quick
@@ -767,9 +773,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `action-menu.test.tsx` cobre os critérios 12 a 14
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 76 tests pass (no silent deletions)
+- [x] `action-menu.test.tsx` cobre os critérios 12 a 14
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 76 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. O botão é o `Button` `ghost` `sm` só com ícone, com o `Ellipsis` do Lucide (três pontos na horizontal, como o desenho do design system). O menu abre num portal do Radix, então o `className` vai para o botão e não há o `z-index` que o design system dava ao card com o menu aberto. A animação de abertura (`et-pop`) ficou de fora: o web ainda não tem `keyframes`.
 
 **Tests**: unit
 **Gate**: quick
@@ -788,9 +796,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `search-dialog.test.tsx` cobre os critérios 1 a 7 de busca global e avisos
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 84 tests pass (no silent deletions)
+- [x] `search-dialog.test.tsx` cobre os critérios 1 a 7 de busca global e avisos
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 84 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. O painel fica dentro do `Dialog.Overlay`, então o Radix trata Esc e clique fora e devolve o foco a quem abriu a busca. O nome "Busca" vem de um `Dialog.Title` `sr-only`. ⌘K e Ctrl+K funcionam nos dois sistemas, como no design system. O resultado ativo volta ao primeiro quando a busca muda, ajustado no render e não num efeito. A capa `xs` das opções usa `style` para os 32px, porque o `cn()` não resolve a largura conflitante.
 
 **Tests**: unit
 **Gate**: quick
@@ -809,9 +819,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `lib/toast.test.ts` cobre: durações por tipo; erro sem prazo; quarto aviso remove o mais antigo; `dismiss`
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 89 tests pass (no silent deletions)
+- [x] `lib/toast.test.ts` cobre: durações por tipo; erro sem prazo; quarto aviso remove o mais antigo; `dismiss`
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 89 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. A fila é um store do módulo, lido por `useToasts()` com `useSyncExternalStore` (lista vazia no servidor). `toast.success` e `toast.error` devolvem o `id`; `toast.dismiss()` sem `id` limpa a fila.
 
 **Tests**: unit
 **Gate**: quick
@@ -830,9 +842,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `toast.test.tsx` cobre os critérios 9 a 13 (com timers falsos)
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 95 tests pass (no silent deletions)
+- [x] `toast.test.tsx` cobre os critérios 9 a 13 (com timers falsos)
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 95 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. O Radix anuncia cada aviso num `role="status"` à parte, com `aria-live` educado para `background` (sucesso) e assertivo para `foreground` (erro), nunca `role="alert"`. O `Toaster` lê a fila com `useToasts()` e cada aviso fechado sai dela com `toast.dismiss`. A região usa `--et-toast-offset`, como no design system, para ficar acima da BottomNav. O critério 12 tem dois testes, um para o ponteiro e outro para o foco. Gate de build da fase verde (95 testes no web, 2 na API).
 
 **Tests**: unit
 **Gate**: quick

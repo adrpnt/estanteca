@@ -54,10 +54,10 @@
 ## Handoff
 
 - **Feature**: `.specs/features/01-foundation`
-- **Phase / Task**: Execute, Fase 5 (PER-54, "In Progress"), T19 a T26 concluídas
-- **Completed**: Fases 1 a 4 mergeadas (PRs #6 a #9); Fase 5 com as 8 tarefas commitadas e o gate Build verde (65 testes no web, 2 na API)
+- **Phase / Task**: Execute, Fase 6 (PER-55, "In Progress"), T27 a T33 concluídas
+- **Completed**: Fases 1 a 5 mergeadas (PRs #6 a #10); Fase 6 com as 7 tarefas commitadas e o gate Build verde (95 testes no web, 2 na API)
 - **In-progress** (file:line): nenhum
-- **Next step**: com o ok do usuário, `git push -u origin pntadr/per-54-fase-5-livro-leitura-e-painel` e abrir o PR `PER-54: Fase 5: Livro, leitura e painel` (label `feature`, modelo `feature.md`); depois, Fase 6 (PER-55), T27
+- **Next step**: com o ok do usuário, `git push -u origin pntadr/per-55-fase-6-interativos-e-navegacao` e abrir o PR `PER-55: Fase 6: Interativos e navegação` (label `feature`, modelo `feature.md`); depois, Fase 7 (PER-56), T34
 - **Blockers**: none
 - **Uncommitted files**: nenhum
-- **Branch**: `pntadr/per-54-fase-5-livro-leitura-e-painel`
+- **Branch**: `pntadr/per-55-fase-6-interativos-e-navegacao`
