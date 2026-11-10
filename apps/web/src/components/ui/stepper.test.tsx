@@ -39,5 +39,13 @@ describe('Stepper', () => {
     expect(screen.getByText('Etapa 1 de 3')).toBeTruthy()
     expect(currentStep()[0].textContent).toContain('Encontrar a obra')
     expect(screen.queryByText(/concluída/)).toBeNull()
+
+    rerender(<Stepper steps={steps} current={1.5} />)
+    expect(screen.getByText('Etapa 2 de 3')).toBeTruthy()
+    expect(currentStep()[0].textContent).toContain('Escolher a edição')
+
+    rerender(<Stepper steps={steps} current={NaN} />)
+    expect(screen.getByText('Etapa 1 de 3')).toBeTruthy()
+    expect(currentStep()[0].textContent).toContain('Encontrar a obra')
   })
 })

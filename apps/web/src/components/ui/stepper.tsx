@@ -25,7 +25,9 @@ const STATES = {
 }
 
 export function Stepper({ steps, current, 'aria-label': label, className }: StepperProps) {
-  const active = Math.min(Math.max(current, 0), Math.max(steps.length - 1, 0))
+  // Fora da lista, fracionário ou NaN cai no primeiro ou no último passo.
+  const index = Number.isNaN(current) ? 0 : Math.floor(current)
+  const active = Math.min(Math.max(index, 0), Math.max(steps.length - 1, 0))
 
   return (
     <nav aria-label={label ?? 'Etapas'} className={cn('@container min-w-0', className)}>
