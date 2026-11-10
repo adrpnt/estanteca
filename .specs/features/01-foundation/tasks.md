@@ -513,9 +513,11 @@ T34 → T35
 
 **Done when**:
 
-- [ ] `status-chip.test.tsx` cobre o critério 7 de livro, leitura e painel
-- [ ] Gate check passes: `npm run test -w @estanteca/web`
-- [ ] Test count: 44 tests pass (no silent deletions)
+- [x] `status-chip.test.tsx` cobre o critério 7 de livro, leitura e painel
+- [x] Gate check passes: `npm run test -w @estanteca/web`
+- [x] Test count: 44 tests pass (no silent deletions)
+
+**Status**: ✅ Complete. `ReadingStatus` e `LoanStatus` são exportados para o BookCard e o SearchDialog. Gate de build da fase verde (44 testes no web, 2 na API).
 
 **Tests**: unit
 **Gate**: quick
