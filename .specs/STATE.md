@@ -51,6 +51,19 @@
 - **Date**: 2026-11-10
 - **Status**: active
 
+### AD-006
+- **Decision**: A autenticação usa os access tokens da API (guard `api`, o padrão). No web, o token fica num cookie `httpOnly` do domínio do Next.js:
+  - **Login**: o Next.js chama `POST /api/v1/auth/login` no servidor, recebe o token e grava o cookie `httpOnly` (`Secure` em produção). O token nunca vai para o `localStorage` nem fica legível pelo JavaScript do navegador.
+  - **Renderização no servidor**: Server Components, Route Handlers e Server Actions leem o cookie e chamam a API com `Authorization: Bearer <token>`.
+  - **Logout e expiração**: o Next.js chama `POST /api/v1/account/logout`, apaga o cookie e redireciona para o login; um 401 da API também apaga o cookie.
+  - **App móvel**: usa os mesmos access tokens, enviados direto no header `Authorization`.
+  - **Em aberto**: como os componentes de cliente (TanStack Query na área logada) chegam à API sem ler o token, se por um Route Handler do Next.js que repassa as chamadas ou por outro arranjo. Fica para a primeira feature com login no web.
+- **Reason**: O web renderiza páginas no servidor, e o servidor do Next.js só enxerga o que vem na requisição da página, então a credencial precisa estar num cookie. Os access tokens já são o guard padrão e servem sem mudança ao app móvel. Pergunta: "Como o Next.js repassa a credencial do usuário para a API: token no `localStorage`, token num cookie `httpOnly` do Next.js ou cookie de sessão do Adonis?" Opção escolhida: "Token num cookie `httpOnly` do domínio do Next.js".
+- **Trade-off**: O login e o logout do web passam pelo servidor do Next.js, que guarda e repassa o token. Páginas que leem o cookie ficam dinâmicas e não podem ir para cache compartilhado; páginas públicas com dado pessoal (ex.: "está na sua estante") buscam essa parte no cliente. O guard `web` (sessão) fica sem uso.
+- **Scope**: `apps/web` e `apps/api`, autenticação
+- **Date**: 2026-11-11
+- **Status**: active
+
 ## Handoff
 
 - **Feature**: `.specs/features/01-foundation`

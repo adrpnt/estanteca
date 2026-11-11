@@ -426,7 +426,8 @@ estante-virtual/
 ```
 
 - **Tipagem de ponta a ponta**: os tipos da API são compartilhados com os clientes por meio de HTTP Transformers no backend e um cliente tipado (Tuyau) no frontend, já previstos no starter kit.
-- Os detalhes ficam para uma especificação técnica posterior: autenticação entre Next.js e API, versionamento da API, deploy e domínios.
+- **Autenticação entre Next.js e API**: access tokens da API. No web, o token fica num cookie `httpOnly` do domínio do Next.js, que o repassa à API como `Authorization: Bearer` nas chamadas feitas no servidor. O app móvel usa os mesmos tokens direto no header.
+- Os detalhes ficam para uma especificação técnica posterior: versionamento da API, deploy e domínios.
 
 ### 10.2 Stack
 
@@ -434,7 +435,7 @@ estante-virtual/
 | --- | --- |
 | Backend | **AdonisJS v7** (TypeScript), API JSON |
 | ORM / banco | Lucid + PostgreSQL |
-| Autenticação | `@adonisjs/auth` + `@adonisjs/ally` (OAuth com Google). Estratégia para web e app (sessão com cookie ou access tokens) a definir na especificação técnica. |
+| Autenticação | `@adonisjs/auth` + `@adonisjs/ally` (OAuth com Google). Access tokens para web e app; no web, o token fica num cookie `httpOnly` do Next.js (ver 10.1). |
 | Autorização | Bouncer, com policies para dono do acervo, privacidade de perfil e papéis no clube |
 | Validação | VineJS, incluindo a normalização dos padrões editoriais |
 | Upload de capas e avatares | `@adonisjs/drive` (local em dev; S3 ou R2 em produção), com processamento de imagem (redimensionar, WebP, extrair cor dominante) |
@@ -461,6 +462,7 @@ estante-virtual/
 | 4 | Privacidade padrão | Perfis novos nascem públicos. Valor investido e dados de aquisição continuam privados por padrão (ver 5.1). |
 | 5 | Nome do produto | **Estanteca** ("estante" + "-teca", de biblioteca). Substitui "Estante Virtual", que já é marca de um marketplace de livros usados no Brasil. Domínio `estanteca.com.br` livre em 10/11/2026. Repositório renomeado para `adrpnt/estanteca`. |
 | 6 | Prioridades | Distribuição entre P1, P2 e P3 validada conforme o resumo no início da seção 5. |
+| 7 | Autenticação | Access tokens da API. No web, token num cookie `httpOnly` do Next.js, repassado à API nas chamadas feitas no servidor (ver 10.1). |
 
 ### 11.2 Em aberto
 
