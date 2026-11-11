@@ -358,8 +358,8 @@ A referência é funcional, mas visualmente datada. O objetivo é uma interface 
 
 ### 7.3 Próximos passos de design
 
-1. Definir a identidade da Estanteca: logo, paleta e tipografia.
-2. Montar o design system: tokens de cor (claro e escuro), espaçamento, raios, sombras e componentes base.
+1. Definir a identidade da Estanteca: logo, paleta e tipografia. Paleta e tipografia estão definidas; falta o logo.
+2. ~~Montar o design system: tokens de cor (claro e escuro), espaçamento, raios, sombras e componentes base.~~ Feito. Tokens, regras de uso e componentes estão em [design-system.md](design-system.md).
 3. Fazer protótipos das telas-chave: dashboard, acervo, cadastro de exemplar, página do livro e perfil público.
 
 ## 8. Mapa de páginas
